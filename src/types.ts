@@ -7,12 +7,7 @@
 
 /** The pages of the site. Used to mark the active navigation link. */
 export type PageName =
-  | 'home'
-  | 'band'
-  | 'termine'
-  | 'kontakt'
-  | 'galerie'
-  | 'impressum'
+  'home' | 'band' | 'termine' | 'kontakt' | 'galerie' | 'impressum'
 
 /** One band member, as shown on the "Band" page. */
 export interface BandMember {
@@ -52,4 +47,7 @@ export interface GalleryPicture {
   src: string
   /** Accessible description of the photo (also used as lightbox caption) */
   alt: string
+  /** Intrinsic pixel size — rendered as width/height attributes to avoid layout shift */
+  width: number
+  height: number
 }

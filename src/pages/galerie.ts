@@ -1,20 +1,17 @@
 /**
  * pages/galerie.ts — the "Galerie" page with a lightbox.
  *
- * Demonstrates: event listeners, clicking elements, hidden/shown state,
- * and closing a modal with Escape (KeyboardEvent).
+ * Thin DOM wiring; the picture data lives in src/data.ts.
  */
-import { initChrome } from '../components'
-import { galleryPictures } from '../data'
-import type { GalleryPicture } from '../types'
+import { initChrome, qs } from '@/components'
+import { galleryPictures } from '@/data'
+import { escapeHtml } from '@/lib/escape'
+import type { GalleryPicture } from '@/types'
 
 initChrome('galerie')
 
 function renderGallery(): void {
-  const grid = document.getElementById('gallery-grid')
-  if (!grid) return
-
-  grid.innerHTML = galleryPictures
+  qs<HTMLElement>('#gallery-grid').innerHTML = galleryPictures
     .map(
       (picture, index) => `
         <button
@@ -25,11 +22,13 @@ function renderGallery(): void {
           <img
             src="${picture.src}"
             alt="${picture.alt}"
+            width="${picture.width}"
+            height="${picture.height}"
             loading="lazy"
             class="aspect-[4/3] w-full rounded-md object-cover"
           />
           <p class="mt-3 text-center text-sm uppercase tracking-[0.15em] text-cream-dim transition-colors group-hover:text-cream">
-            ${picture.title}
+            ${escapeHtml(picture.title)}
           </p>
         </button>
       `,
@@ -38,32 +37,27 @@ function renderGallery(): void {
 }
 
 function openLightbox(picture: GalleryPicture): void {
-  const lightbox = document.getElementById('lightbox')
-  const image = lightbox?.querySelector<HTMLImageElement>('.lightbox-picture')
-  const caption = lightbox?.querySelector('.lightbox-caption')
+  const lightbox = qs<HTMLElement>('#lightbox')
+  const image = qs<HTMLImageElement>('.lightbox-picture', lightbox)
+  const caption = qs<HTMLElement>('.lightbox-caption', lightbox)
 
-  if (lightbox && image && caption) {
-    image.src = picture.src
-    image.alt = picture.alt
-    caption.textContent = picture.title
-    lightbox.hidden = false
-  }
+  image.src = picture.src
+  image.alt = picture.alt
+  caption.textContent = picture.title
+  lightbox.hidden = false
 }
 
 function closeLightbox(): void {
-  const lightbox = document.getElementById('lightbox')
-  if (lightbox) {
-    lightbox.hidden = true
-  }
+  qs<HTMLElement>('#lightbox').hidden = true
 }
 
 function setupLightbox(): void {
-  const grid = document.getElementById('gallery-grid')
-  const lightbox = document.getElementById('lightbox')
-  const closeButton = lightbox?.querySelector('.lightbox-close')
+  const grid = qs<HTMLElement>('#gallery-grid')
+  const lightbox = qs<HTMLElement>('#lightbox')
+  const closeButton = qs<HTMLButtonElement>('.lightbox-close', lightbox)
 
   // Event delegation: one listener on the grid handles every picture.
-  grid?.addEventListener('click', (event) => {
+  grid.addEventListener('click', (event) => {
     const target = event.target as HTMLElement
     const item = target.closest<HTMLElement>('[data-index]')
 
@@ -76,10 +70,10 @@ function setupLightbox(): void {
     }
   })
 
-  closeButton?.addEventListener('click', closeLightbox)
+  closeButton.addEventListener('click', closeLightbox)
 
   // Click on the dark background also closes the lightbox.
-  lightbox?.addEventListener('click', (event) => {
+  lightbox.addEventListener('click', (event) => {
     if (event.target === lightbox) {
       closeLightbox()
     }

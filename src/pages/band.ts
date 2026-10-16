@@ -1,12 +1,12 @@
 /**
  * pages/band.ts — the "Band" page.
  *
- * Demonstrates: looping over a typed array (map), building HTML
- * from data, and a small typed function with a template literal.
+ * Thin DOM wiring: the logic lives in src/lib/ (unit-tested there).
  */
-import { initChrome, escapeHtml } from '../components'
-import { bandDescription, bandMembers } from '../data'
-import type { BandMember } from '../types'
+import { initChrome, qs } from '@/components'
+import { bandDescription, bandMembers } from '@/data'
+import { escapeHtml } from '@/lib/escape'
+import type { BandMember } from '@/types'
 
 initChrome('band')
 
@@ -36,18 +36,15 @@ function memberCard(member: BandMember): string {
 }
 
 function renderDescription(): void {
-  const element = document.getElementById('band-description')
-  if (!element) return
   // whitespace-pre-line on the <p> renders the \n\n in data.ts as paragraphs
-  element.textContent = bandDescription
+  qs<HTMLElement>('#band-description').textContent = bandDescription
 }
 
 function renderMembers(): void {
-  const grid = document.getElementById('member-grid')
-  if (!grid) return
-
   // `map` turns every BandMember into a card; `join` glues them together.
-  grid.innerHTML = bandMembers.map(memberCard).join('')
+  qs<HTMLElement>('#member-grid').innerHTML = bandMembers
+    .map(memberCard)
+    .join('')
 }
 
 renderDescription()

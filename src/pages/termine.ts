@@ -1,24 +1,17 @@
 /**
  * pages/termine.ts — the "Termine" (events) page.
  *
- * Demonstrates: splitting/sorting arrays by date, formatting dates
- * in German, and optional interface fields (note the `?.` and `??`).
+ * Thin DOM wiring: date formatting and the upcoming/past split live
+ * in src/lib/ (unit-tested there).
  */
-import { initChrome, escapeHtml } from '../components'
-import { events } from '../data'
-import type { BandEvent } from '../types'
+import { initChrome, qs } from '@/components'
+import { events } from '@/data'
+import { formatEventDate } from '@/lib/dates'
+import { splitByDate } from '@/lib/events'
+import { escapeHtml } from '@/lib/escape'
+import type { BandEvent } from '@/types'
 
 initChrome('termine')
-
-/** A little formatter we reuse for every date shown on this page. */
-function formatEventDate(date: string): string {
-  return new Date(date).toLocaleDateString('de-DE', {
-    weekday: 'long',
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  })
-}
 
 /** Render one event as a card. */
 function eventCard(event: BandEvent, past: boolean): string {
@@ -54,20 +47,10 @@ function eventCard(event: BandEvent, past: boolean): string {
 }
 
 function renderEvents(): void {
-  const upcomingSection = document.getElementById('upcoming-events')
-  const pastSection = document.getElementById('past-events')
-  if (!upcomingSection || !pastSection) return
+  const upcomingSection = qs<HTMLElement>('#upcoming-events')
+  const pastSection = qs<HTMLElement>('#past-events')
 
-  const today = new Date()
-
-  // Split the events into the two buckets, newest first / oldest first.
-  const upcoming = events
-    .filter((event) => new Date(event.date) >= today)
-    .sort((a, b) => a.date.localeCompare(b.date))
-
-  const past = events
-    .filter((event) => new Date(event.date) < today)
-    .sort((a, b) => b.date.localeCompare(a.date))
+  const { upcoming, past } = splitByDate(events, new Date())
 
   upcomingSection.innerHTML = upcoming.length
     ? `<h2 class="font-marquee text-2xl text-gold">Kommende Termine</h2>

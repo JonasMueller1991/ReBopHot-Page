@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReBop Hot – Vintage Dance Music</title>
-
-    <!-- Vintage typography: marquee (Limelight), display serif (Playfair), condensed (Oswald) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Limelight&family=Oswald:wght@400;600&family=Pacifico&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="ReBop Hot – die neunköpfige Swing- & Jump-Blues-Combo aus Karlsruhe. Vintage Dance Music der 1930er bis 1950er: Termine, Band, Galerie und Kontakt."
     />
+    <meta property="og:title" content="ReBop Hot – Vintage Dance Music" />
+    <meta
+      property="og:description"
+      content="Die neunköpfige Swing- & Jump-Blues-Combo aus Karlsruhe – tanzbar von Jive über Lindy-Hop bis Boogie-Woogie."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/band-2022.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
@@ -19,14 +23,14 @@
     <!-- Navigation + footer are shared; they are filled by src/components.ts -->
     <header id="site-header"></header>
 
-    <main>
+    <main id="main-content">
       <!-- ================= Hero: the 2026 band banner is the star ================= -->
       <section class="relative overflow-hidden border-b-2 border-gold/60">
         <!-- Slowly rotating starburst behind the banner:
              much larger than the photo so the rays fan out visibly
              around the (opaque) banner. Clipped by overflow-hidden. -->
         <div
-          class="starburst animate-starburst pointer-events-none absolute left-1/2 top-1/2 h-[68rem] w-[68rem] -translate-x-1/2 -translate-y-1/2"
+          class="starburst pointer-events-none absolute top-1/2 left-1/2 h-[68rem] w-[68rem] -translate-x-1/2 -translate-y-1/2 animate-starburst"
           aria-hidden="true"
         ></div>
 
@@ -39,20 +43,24 @@
             Karlsruhe
           </h1>
 
-          <p class="mb-10 text-xs uppercase tracking-[0.4em] text-gold sm:text-sm">
+          <p
+            class="mb-10 text-xs tracking-[0.4em] text-gold uppercase sm:text-sm"
+          >
             Karlsruhe · Kraichgau · Pfalz
           </p>
 
           <img
             src="/images/2026_banner.png"
             alt="ReBop Hot &ndash; die Band, Bandbild 2026 mit ReBop-Hot-Schriftzug"
+            width="1536"
+            height="1024"
             class="w-full rounded-lg border-2 border-gold/60 shadow-[8px_8px_0_rgba(143,48,41,0.55)]"
           />
 
-          <p class="mt-10 font-display text-2xl italic text-gold">
+          <p class="mt-10 font-display text-2xl text-gold italic">
             &ndash; Ready to dance? &ndash;
           </p>
-          <p class="mt-3 uppercase tracking-[0.25em] text-cream-dim">
+          <p class="mt-3 tracking-[0.25em] text-cream-dim uppercase">
             Swing &amp; Jump-Blues · Vintage Dance Music
           </p>
 
@@ -68,22 +76,22 @@
         class="overflow-hidden border-b border-gold/40 bg-wine py-2"
         aria-hidden="true"
       >
-        <div class="animate-marquee flex w-max">
+        <div class="flex w-max animate-marquee">
           <span
-            class="shrink-0 whitespace-nowrap text-sm uppercase tracking-[0.3em] text-cream/90"
+            class="shrink-0 text-sm tracking-[0.3em] whitespace-nowrap text-cream/90 uppercase"
           >
-            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦
-            Jitterbug ✦ Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦
-            Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
-            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦
+            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
+            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦ Jump Blues ✦
+            Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦ Boogie-Woogie ✦
+            Rock&rsquo;n&rsquo;Roll ✦
           </span>
           <span
-            class="shrink-0 whitespace-nowrap text-sm uppercase tracking-[0.3em] text-cream/90"
+            class="shrink-0 text-sm tracking-[0.3em] whitespace-nowrap text-cream/90 uppercase"
           >
-            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦
-            Jitterbug ✦ Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦
-            Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
-            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦
+            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
+            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦ Jump Blues ✦
+            Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦ Boogie-Woogie ✦
+            Rock&rsquo;n&rsquo;Roll ✦
           </span>
         </div>
       </div>
@@ -94,15 +102,15 @@
 
       <!-- ================= Band teaser ================= -->
       <section class="mx-auto max-w-4xl px-6 py-20 text-center">
-        <p class="mb-4 text-xs uppercase tracking-[0.4em] text-gold">
-          ✦ ✦ ✦
-        </p>
+        <p class="mb-4 text-xs tracking-[0.4em] text-gold uppercase">✦ ✦ ✦</p>
         <h2 class="font-marquee text-3xl text-cream sm:text-4xl">Die Band</h2>
 
         <!-- Band photo from www.rebophot.de (Fotoshooting 2022, Foto: Dominik Frank) -->
         <img
           src="/images/band-2022.jpg"
           alt="Die neunköpfige Band ReBop Hot, Fotoshooting August 2022"
+          width="1920"
+          height="1275"
           loading="lazy"
           class="mx-auto mt-10 w-full max-w-2xl rounded-lg border-2 border-gold/60 shadow-[8px_8px_0_rgba(143,48,41,0.55)]"
         />
@@ -113,7 +121,7 @@
           Music auf die Bühne &ndash; tanzbar von Jive über Lindy-Hop bis
           Boogie-Woogie.
         </p>
-        <p class="mt-8 uppercase tracking-[0.25em] text-xs text-cream-dim">
+        <p class="mt-8 text-xs tracking-[0.25em] text-cream-dim uppercase">
           Standards von George Gershwin bis Ray Charles &ndash; und jede Menge
           weniger bekannte Kostbarkeiten
         </p>

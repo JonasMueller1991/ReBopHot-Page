@@ -10,7 +10,7 @@
    only what utilities cannot express lives here.
    ============================================================ */
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Tailwind v4 theme tokens: every `--color-*` / `--font-*` becomes a
    utility class (bg-stage, text-gold, font-marquee, ...).
@@ -31,12 +31,12 @@
   --color-error: #e07a5f;
   --color-success: #8fbf7f;
 
-  --font-marquee: "Limelight", Georgia, serif;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-condensed: "Oswald", "Arial Narrow", sans-serif;
+  --font-marquee: 'Limelight', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-condensed: 'Oswald', 'Arial Narrow', sans-serif;
   /* Script for the band wordmark (the banner's cursive "Schriftzug").
-     Alternatives worth trying: Yellowtail, Satisfy, Grand Hotel. */
-  --font-script: "Pacifico", cursive;
+     Alternatives worth trying: Yellowtail, Satisfy, Grand Hotel, Pacifico. */
+  --font-script: 'Pacifico', cursive;
 
   --animate-marquee: marquee 32s linear infinite;
   --animate-starburst: spin 90s linear infinite;
@@ -65,6 +65,15 @@ body {
   background-repeat: no-repeat;
 }
 
+/* ---------- Accessibility: visible keyboard focus ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 /* ---------- Vintage components (plain CSS, used with utilities) ---------- */
 
 /* Slowly rotating 1950s-style starburst, placed behind the hero banner.
@@ -87,7 +96,7 @@ body {
 
 .ticket::before,
 .ticket::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   width: 1.4rem;

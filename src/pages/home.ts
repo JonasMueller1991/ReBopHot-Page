@@ -1,55 +1,18 @@
 /**
  * pages/home.ts — entry script of the start page.
  *
- * The shared header/footer come from src/components.ts (initChrome).
- * This script handles the data-driven part: the "next gig" admission ticket.
- *
- * Demonstrates: importing shared modules, Date arithmetic, union types
- * (BandEvent | null) and template literals with Tailwind classes.
+ * Thin DOM wiring: the logic lives in src/lib/ (unit-tested there).
  */
-import { initChrome, escapeHtml } from '../components'
-import { events } from '../data'
-import type { BandEvent } from '../types'
+import { initChrome, qs } from '@/components'
+import { events } from '@/data'
+import { daysUntilLabel } from '@/lib/dates'
+import { findNextEvent } from '@/lib/events'
+import { escapeHtml } from '@/lib/escape'
 
 initChrome('home')
 
-/**
- * Returns the next upcoming event (or null if there is none).
- * The explicit return type `BandEvent | null` forces us to handle
- * the "nothing found" case at the call site.
- */
-function findNextEvent(eventList: BandEvent[], today: Date): BandEvent | null {
-  const upcoming = eventList
-    .filter((event) => new Date(event.date) >= today)
-    .sort((a, b) => a.date.localeCompare(b.date))
-
-  const next = upcoming[0]
-  return next !== undefined ? next : null
-}
-
-/** Whole days between `today` (with its time stripped) and the event date. */
-function daysUntil(date: string, today: Date): number {
-  const startOfDay = (d: Date) =>
-    new Date(d.getFullYear(), d.getMonth(), d.getDate())
-
-  const millisPerDay = 86_400_000
-  return Math.round(
-    (startOfDay(new Date(date)).getTime() - startOfDay(today).getTime()) /
-      millisPerDay,
-  )
-}
-
-/** German label like "heute", "morgen" or "in 12 Tagen". */
-function daysUntilLabel(date: string, today: Date): string {
-  const days = daysUntil(date, today)
-  if (days === 0) return 'heute'
-  if (days === 1) return 'morgen'
-  return `in ${days} Tagen`
-}
-
 function renderNextEvent(): void {
-  const container = document.getElementById('next-event')
-  if (!container) return
+  const container = qs<HTMLElement>('#next-event')
 
   const today = new Date()
   const nextEvent = findNextEvent(events, today)

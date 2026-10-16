@@ -5,7 +5,12 @@
  * rendering code is the core idea you will practice in this project:
  * the pages in src/pages/ read this data and turn it into HTML.
  */
-import type { BandMember, BandEvent, ContactInfo, GalleryPicture } from './types'
+import type {
+  BandMember,
+  BandEvent,
+  ContactInfo,
+  GalleryPicture,
+} from './types'
 
 export const bandName = 'ReBop Hot'
 
@@ -153,55 +158,77 @@ export const galleryPictures: GalleryPicture[] = [
     title: 'ReBop Hot 2022',
     src: '/images/band-2022.jpg',
     alt: 'Die Band ReBop Hot vor einer Wand, Fotoshooting August 2022',
+    width: 1920,
+    height: 1275,
   },
   {
     title: 'ReBop Hot 2018',
     src: '/images/band-2018.png',
     alt: 'Die Band ReBop Hot, Fotoshooting November 2018',
+    width: 1920,
+    height: 1154,
   },
   {
     title: 'Gesang: Ilse, Jakob und Martin',
     src: '/images/gesang.jpg',
     alt: 'Die Sängerin und die zwei Sänger von ReBop Hot',
+    width: 1920,
+    height: 1172,
   },
   {
     title: 'Bläsersatz',
     src: '/images/blaesersatz.jpg',
     alt: 'Der Bläsersatz von ReBop Hot mit Saxophonen und Posaune',
+    width: 1920,
+    height: 1189,
   },
   {
     title: 'Kur- und Festspielhaus Badenweiler 2024',
     src: '/images/badenweiler-1.jpg',
     alt: 'ReBop Hot auf der Konzertmuschel in Badenweiler, Juli 2024',
+    width: 1920,
+    height: 1277,
   },
   {
     title: 'Kur- und Festspielhaus Badenweiler 2024',
     src: '/images/badenweiler-2.jpg',
     alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+    width: 1920,
+    height: 1277,
   },
   {
     title: 'Kur- und Festspielhaus Badenweiler 2024',
     src: '/images/badenweiler-3.jpg',
     alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+    width: 1920,
+    height: 1277,
   },
   {
     title: 'Genuss- und Gläserklang Bruchsal 2024',
     src: '/images/bruchsal-1.jpg',
     alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+    width: 1920,
+    height: 1081,
   },
   {
     title: 'Genuss- und Gläserklang Bruchsal 2024',
     src: '/images/bruchsal-3.jpg',
     alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+    width: 1920,
+    height: 1081,
   },
   {
     title: 'Sonntagskonzert im Kurpark Bad Herrenalb 2022',
     src: '/images/kurpark-2022.jpg',
     alt: 'Sonntagskonzert in der Kurhaus-Konzertmuschel Bad Herrenalb, Juli 2022',
+    width: 1815,
+    height: 875,
   },
   {
     title: "Swingin' Charlie im Tempel Karlsruhe 2019",
     src: '/images/tempel-2019.jpg',
     alt: "ReBop Hot in Action beim Swingin' Charlie im Kulturzentrum Tempel Karlsruhe, Oktober 2019",
+    width: 1920,
+    height: 485,
   },
 ]

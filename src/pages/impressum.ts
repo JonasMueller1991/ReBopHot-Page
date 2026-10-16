@@ -1,14 +1,12 @@
 /**
  * pages/impressum.ts — the "Impressum" page.
- * It is mostly static HTML; the script only wires up the shared
- * navigation and footer.
+ * Mostly static HTML; wires up the shared chrome and adds a "Stand" note
+ * so you can see immediately that the script ran.
  */
-import { initChrome } from '../components'
+import { initChrome, qs } from '@/components'
 
 initChrome('impressum')
 
-// Small learning exercise: highlight today's date at the bottom of the page,
-// so you can see immediately that the script ran.
 const today = new Date().toLocaleDateString('de-DE', {
   weekday: 'long',
   day: '2-digit',
@@ -16,8 +14,7 @@ const today = new Date().toLocaleDateString('de-DE', {
   year: 'numeric',
 })
 
-const main = document.querySelector('main')
-main?.insertAdjacentHTML(
+qs<HTMLElement>('main').insertAdjacentHTML(
   'beforeend',
   `<p class="mt-8 text-sm italic text-cream-dim">Stand: ${today} (dieser Hinweis wird per TypeScript eingefügt)</p>`,
 )

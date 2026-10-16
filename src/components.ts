@@ -1,28 +1,63 @@
 /**
  * components.ts
- * -----------
- * Shared pieces that every page has: the navigation and the footer.
- * Each HTML page provides an empty <header id="site-header"> and
+ * -------------
+ * Shared pieces that every page has: the fonts, the navigation,
+ * the footer, a skip-to-content link, and small typed DOM helpers.
+ *
+ * Every page provides an empty <header id="site-header"> and
  * <footer id="site-footer">; the page script fills them via
  * `initChrome('home' | 'band' | ...)` (see src/pages/).
  *
  * All markup uses Tailwind utility classes; the design tokens come
  * from the @theme block in src/tailwind.css.
  */
-import type { PageName } from './types'
-import { contact } from './data'
 
-/** Simple helper: escape text so it can be safely interpolated into HTML. */
-export function escapeHtml(text: string): string {
-  const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
+// Self-hosted fonts (@fontsource): loaded through this module so all
+// six pages get them via their `initChrome` import — no Google CDN
+// request, GDPR-friendly, and identical on every page.
+import '@fontsource/pacifico'
+import '@fontsource/limelight'
+import '@fontsource/oswald/400.css'
+import '@fontsource/oswald/600.css'
+import '@fontsource/playfair-display/400.css'
+import '@fontsource/playfair-display/600.css'
+import '@fontsource/playfair-display/400-italic.css'
+import '@fontsource/playfair-display/600-italic.css'
+
+import type { PageName } from '@/types'
+import { contact } from '@/data'
+
+// ---------------------------------------------------------------------------
+// Typed DOM helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * `querySelector` that throws a helpful error instead of returning null.
+ * Use it for elements the page cannot work without — a missing element
+ * is a bug you want to see immediately, not a silent `if (!el) return`.
+ */
+export function qs<T extends Element>(
+  selector: string,
+  root: ParentNode = document,
+): T {
+  const element = root.querySelector<T>(selector)
+  if (element === null) {
+    throw new Error(`Required element not found: "${selector}"`)
   }
-  return text.replace(/[&<>"']/g, (char) => map[char])
+  return element
 }
+
+/** Typed variant of `querySelectorAll` (no null case to handle). */
+export function qsa<T extends Element>(
+  selector: string,
+  root: ParentNode = document,
+): NodeListOf<T> {
+  return root.querySelectorAll<T>(selector)
+}
+
+// ---------------------------------------------------------------------------
+// Shared chrome: skip link, header, footer
+// ---------------------------------------------------------------------------
 
 interface NavLink {
   name: PageName
@@ -40,9 +75,20 @@ const navLinks: NavLink[] = [
   { name: 'impressum', href: 'impressum.html', label: 'Impressum' },
 ]
 
+/** Accessibility: the first tabbable element jumps straight to the content. */
+function renderSkipLink(): void {
+  if (document.querySelector('.skip-link') !== null) return
+
+  const link = document.createElement('a')
+  link.href = '#main-content'
+  link.textContent = 'Zum Inhalt springen'
+  link.className =
+    'skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-gold focus:px-4 focus:py-2 focus:font-condensed focus:text-sm focus:text-stage'
+  document.body.prepend(link)
+}
+
 function renderHeader(activePage: PageName): void {
-  const header = document.getElementById('site-header')
-  if (!header) return
+  const header = qs<HTMLElement>('#site-header')
 
   // Build one <a> per link; the current page is highlighted in gold.
   const linkHtml = navLinks
@@ -74,8 +120,7 @@ function renderHeader(activePage: PageName): void {
 }
 
 function renderFooter(): void {
-  const footer = document.getElementById('site-footer')
-  if (!footer) return
+  const footer = qs<HTMLElement>('#site-footer')
 
   footer.className = 'border-t-2 border-gold/60 bg-[#0a0a09]'
 
@@ -100,8 +145,9 @@ function renderFooter(): void {
   `
 }
 
-/** Fill header and footer. Call this first in every page script. */
+/** Fill skip link, header and footer. Call this first in every page script. */
 export function initChrome(activePage: PageName): void {
+  renderSkipLink()
   renderHeader(activePage)
   renderFooter()
 }
