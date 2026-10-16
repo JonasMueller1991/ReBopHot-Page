@@ -143,15 +143,65 @@ export const contact: ContactInfo = {
   facebookUrl: 'https://www.facebook.com/Re-Bop-Hot-100555619167395',
 }
 
-/** Placeholder "photos" for the gallery page (CSS gradients instead of files). */
+/**
+ * The real photos from www.rebophot.de, downloaded into public/images/.
+ * Credits: band photos by Dominik Frank (2018/2022 shooting),
+ * concert photos by the venues/band. Private learning use only.
+ */
 export const galleryPictures: GalleryPicture[] = [
-  { title: 'Herbstmarkt Gaggenau', gradient: 'linear-gradient(135deg, #d4a94e, #7a4a1e)' },
-  { title: 'Jazzclub Wiesloch', gradient: 'linear-gradient(135deg, #8e2f2f, #2a1010)' },
-  { title: 'Kurpark Bad Schönborn', gradient: 'linear-gradient(135deg, #3e6b4f, #16301f)' },
-  { title: 'Weihnachtsmarkt Rastatt', gradient: 'linear-gradient(135deg, #4a6b8e, #101c2a)' },
-  { title: 'Stadtfest Rastatt', gradient: 'linear-gradient(135deg, #b3542f, #3a1a0a)' },
-  { title: 'Biergarten-Konzert', gradient: 'linear-gradient(135deg, #c9a24b, #584a12)' },
-  { title: 'Vintage Dance Music', gradient: 'linear-gradient(135deg, #6b3e6b, #1f0f1f)' },
-  { title: 'Benefizkonzert', gradient: 'linear-gradient(135deg, #2f6b8e, #0a1a2a)' },
-  { title: 'On Stage', gradient: 'linear-gradient(135deg, #8e5a2f, #2a1a0a)' },
+  {
+    title: 'ReBop Hot 2022',
+    src: '/images/band-2022.jpg',
+    alt: 'Die Band ReBop Hot vor einer Wand, Fotoshooting August 2022',
+  },
+  {
+    title: 'ReBop Hot 2018',
+    src: '/images/band-2018.png',
+    alt: 'Die Band ReBop Hot, Fotoshooting November 2018',
+  },
+  {
+    title: 'Gesang: Ilse, Jakob und Martin',
+    src: '/images/gesang.jpg',
+    alt: 'Die Sängerin und die zwei Sänger von ReBop Hot',
+  },
+  {
+    title: 'Bläsersatz',
+    src: '/images/blaesersatz.jpg',
+    alt: 'Der Bläsersatz von ReBop Hot mit Saxophonen und Posaune',
+  },
+  {
+    title: 'Kur- und Festspielhaus Badenweiler 2024',
+    src: '/images/badenweiler-1.jpg',
+    alt: 'ReBop Hot auf der Konzertmuschel in Badenweiler, Juli 2024',
+  },
+  {
+    title: 'Kur- und Festspielhaus Badenweiler 2024',
+    src: '/images/badenweiler-2.jpg',
+    alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+  },
+  {
+    title: 'Kur- und Festspielhaus Badenweiler 2024',
+    src: '/images/badenweiler-3.jpg',
+    alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+  },
+  {
+    title: 'Genuss- und Gläserklang Bruchsal 2024',
+    src: '/images/bruchsal-1.jpg',
+    alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+  },
+  {
+    title: 'Genuss- und Gläserklang Bruchsal 2024',
+    src: '/images/bruchsal-3.jpg',
+    alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+  },
+  {
+    title: 'Sonntagskonzert im Kurpark Bad Herrenalb 2022',
+    src: '/images/kurpark-2022.jpg',
+    alt: 'Sonntagskonzert in der Kurhaus-Konzertmuschel Bad Herrenalb, Juli 2022',
+  },
+  {
+    title: "Swingin' Charlie im Tempel Karlsruhe 2019",
+    src: '/images/tempel-2019.jpg',
+    alt: "ReBop Hot in Action beim Swingin' Charlie im Kulturzentrum Tempel Karlsruhe, Oktober 2019",
+  },
 ]

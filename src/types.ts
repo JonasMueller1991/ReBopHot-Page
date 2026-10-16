@@ -45,9 +45,11 @@ export interface ContactInfo {
   facebookUrl: string
 }
 
-/** A gallery picture. We use generated placeholders instead of real photos. */
+/** A gallery picture, served from the project's public/images/ folder. */
 export interface GalleryPicture {
   title: string
-  /** Any CSS value usable in `background` (here: a color gradient) */
-  gradient: string
+  /** Path as served by Vite, e.g. "/images/band-2022.jpg" (from public/images/) */
+  src: string
+  /** Accessible description of the photo (also used as lightbox caption) */
+  alt: string
 }

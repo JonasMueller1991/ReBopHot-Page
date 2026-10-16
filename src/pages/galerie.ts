@@ -19,10 +19,15 @@ function renderGallery(): void {
       (picture, index) => `
         <button
           type="button"
-          class="group cursor-pointer rounded-lg border border-gold/40 bg-stage-soft p-4 transition-colors hover:border-gold"
+          class="group cursor-pointer overflow-hidden rounded-lg border border-gold/40 bg-stage-soft p-4 transition-colors hover:border-gold"
           data-index="${index}"
         >
-          <div class="aspect-[4/3] rounded-md" style="background: ${picture.gradient}"></div>
+          <img
+            src="${picture.src}"
+            alt="${picture.alt}"
+            loading="lazy"
+            class="aspect-[4/3] w-full rounded-md object-cover"
+          />
           <p class="mt-3 text-center text-sm uppercase tracking-[0.15em] text-cream-dim transition-colors group-hover:text-cream">
             ${picture.title}
           </p>
@@ -34,11 +39,12 @@ function renderGallery(): void {
 
 function openLightbox(picture: GalleryPicture): void {
   const lightbox = document.getElementById('lightbox')
-  const image = lightbox?.querySelector('.lightbox-picture')
+  const image = lightbox?.querySelector<HTMLImageElement>('.lightbox-picture')
   const caption = lightbox?.querySelector('.lightbox-caption')
 
   if (lightbox && image && caption) {
-    ;(image as HTMLElement).style.background = picture.gradient
+    image.src = picture.src
+    image.alt = picture.alt
     caption.textContent = picture.title
     lightbox.hidden = false
   }
