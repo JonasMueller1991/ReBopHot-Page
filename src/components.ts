@@ -60,8 +60,11 @@ function renderHeader(activePage: PageName): void {
 
   header.innerHTML = `
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
-      <a href="index.html" class="font-marquee text-2xl text-cream">
-        Re<span class="text-rust">Bop</span> Hot
+      <a
+        href="index.html"
+        class="logo-letterpress font-marquee text-2xl"
+      >
+        ReBop Hot
       </a>
       <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
         ${linkHtml}
