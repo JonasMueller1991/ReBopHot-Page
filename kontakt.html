@@ -4,47 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakt – ReBop Hot</title>
-    <link rel="stylesheet" href="/src/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&family=Oswald:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
-  <body>
+  <body class="min-h-screen font-condensed text-cream antialiased">
     <header id="site-header"></header>
 
-    <main class="container container-narrow">
-      <h1 class="page-title">Kontakt</h1>
+    <main class="mx-auto max-w-2xl px-6 py-14">
+      <h1
+        class="border-b border-gold/40 pb-3 font-marquee text-3xl text-cream sm:text-4xl"
+      >
+        Kontakt
+      </h1>
 
       <!-- Contact details are filled in by kontakt.ts -->
-      <section id="contact-details"></section>
+      <section id="contact-details" class="mt-10"></section>
 
-      <h2>Anfrage senden</h2>
-      <p>
-        Sie möchten uns für eine Veranstaltung buchen? Schreiben Sie uns –
+      <h2 class="mt-12 font-marquee text-2xl text-gold">Anfrage senden</h2>
+      <p class="mt-3 font-display italic text-cream-dim">
+        Sie möchten uns für eine Veranstaltung buchen? Schreiben Sie uns &ndash;
         wir melden uns so schnell wie möglich bei Ihnen.
       </p>
 
       <!-- The form is validated in TypeScript, see src/pages/kontakt.ts -->
-      <form id="contact-form" novalidate>
-        <div class="form-field">
-          <label for="name">Name *</label>
-          <input type="text" id="name" name="name" />
-          <span class="error" data-error-for="name"></span>
+      <form id="contact-form" class="mt-8" novalidate>
+        <div class="mt-5 flex flex-col gap-1.5">
+          <label for="name" class="text-sm uppercase tracking-[0.15em] text-cream-dim">
+            Name *
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="rounded-md border border-gold/40 bg-stage-soft px-4 py-2.5 text-cream focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
+          <span class="min-h-5 text-sm text-error" data-error-for="name"></span>
         </div>
-        <div class="form-field">
-          <label for="email">E-Mail *</label>
-          <input type="email" id="email" name="email" />
-          <span class="error" data-error-for="email"></span>
+
+        <div class="mt-3 flex flex-col gap-1.5">
+          <label for="email" class="text-sm uppercase tracking-[0.15em] text-cream-dim">
+            E-Mail *
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="rounded-md border border-gold/40 bg-stage-soft px-4 py-2.5 text-cream focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
+          <span class="min-h-5 text-sm text-error" data-error-for="email"></span>
         </div>
-        <div class="form-field">
-          <label for="date">Veranstaltungsdatum (optional)</label>
-          <input type="date" id="date" name="date" />
-          <span class="error" data-error-for="date"></span>
+
+        <div class="mt-3 flex flex-col gap-1.5">
+          <label for="date" class="text-sm uppercase tracking-[0.15em] text-cream-dim">
+            Veranstaltungsdatum (optional)
+          </label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            class="rounded-md border border-gold/40 bg-stage-soft px-4 py-2.5 text-cream focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50"
+          />
+          <span class="min-h-5 text-sm text-error" data-error-for="date"></span>
         </div>
-        <div class="form-field">
-          <label for="message">Nachricht *</label>
-          <textarea id="message" name="message" rows="6"></textarea>
-          <span class="error" data-error-for="message"></span>
+
+        <div class="mt-3 flex flex-col gap-1.5">
+          <label for="message" class="text-sm uppercase tracking-[0.15em] text-cream-dim">
+            Nachricht *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            class="rounded-md border border-gold/40 bg-stage-soft px-4 py-2.5 text-cream focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/50"
+          ></textarea>
+          <span class="min-h-5 text-sm text-error" data-error-for="message"></span>
         </div>
-        <button type="submit" class="btn">Absenden</button>
-        <p id="form-success" class="success" hidden>
+
+        <button type="submit" class="btn-retro mt-6">Absenden</button>
+        <p id="form-success" class="mt-4 text-sm text-success" hidden>
           Vielen Dank! Ihre Nachricht wurde (nur im Browser) gespeichert.
         </p>
       </form>

@@ -16,10 +16,21 @@ function memberCard(member: BandMember): string {
   const initials = member.name.slice(0, 2).toUpperCase()
 
   return `
-    <article class="member-card">
-      <div class="member-avatar" aria-hidden="true">${initials}</div>
-      <h3>${escapeHtml(member.role)}: ${escapeHtml(member.name)}</h3>
-      <p><a href="mailto:${escapeHtml(member.email)}">${escapeHtml(member.email)}</a></p>
+    <article class="rounded-lg border border-gold/40 bg-stage-soft p-6 text-center">
+      <div
+        class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold to-rust font-marquee text-2xl text-stage"
+        aria-hidden="true"
+      >
+        ${initials}
+      </div>
+      <h3 class="mt-4 font-display text-lg text-cream">
+        ${escapeHtml(member.role)}: ${escapeHtml(member.name)}
+      </h3>
+      <p class="mt-1 text-sm">
+        <a class="text-gold transition-colors hover:text-cream" href="mailto:${escapeHtml(member.email)}">
+          ${escapeHtml(member.email)}
+        </a>
+      </p>
     </article>
   `
 }
@@ -27,6 +38,7 @@ function memberCard(member: BandMember): string {
 function renderDescription(): void {
   const element = document.getElementById('band-description')
   if (!element) return
+  // whitespace-pre-line on the <p> renders the \n\n in data.ts as paragraphs
   element.textContent = bandDescription
 }
 

@@ -17,9 +17,15 @@ function renderGallery(): void {
   grid.innerHTML = galleryPictures
     .map(
       (picture, index) => `
-        <button type="button" class="gallery-item" data-index="${index}">
-          <div class="gallery-picture" style="background: ${picture.gradient}"></div>
-          <p class="gallery-caption">${picture.title}</p>
+        <button
+          type="button"
+          class="group cursor-pointer rounded-lg border border-gold/40 bg-stage-soft p-4 transition-colors hover:border-gold"
+          data-index="${index}"
+        >
+          <div class="aspect-[4/3] rounded-md" style="background: ${picture.gradient}"></div>
+          <p class="mt-3 text-center text-sm uppercase tracking-[0.15em] text-cream-dim transition-colors group-hover:text-cream">
+            ${picture.title}
+          </p>
         </button>
       `,
     )
@@ -53,7 +59,7 @@ function setupLightbox(): void {
   // Event delegation: one listener on the grid handles every picture.
   grid?.addEventListener('click', (event) => {
     const target = event.target as HTMLElement
-    const item = target.closest<HTMLElement>('.gallery-item')
+    const item = target.closest<HTMLElement>('[data-index]')
 
     if (item) {
       const index = Number(item.dataset.index)

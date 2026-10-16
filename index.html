@@ -13,54 +13,11 @@
       rel="stylesheet"
     />
 
-    <!-- Tailwind draft of the homepage (all other pages still use styles.css) -->
-    <link rel="stylesheet" href="/src/home.css" />
+    <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
   <body class="min-h-screen font-condensed text-cream antialiased">
-    <!-- ================= Header ================= -->
-    <header
-      class="sticky top-0 z-20 border-b-2 border-gold/60 bg-stage/85 backdrop-blur"
-    >
-      <div
-        class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3"
-      >
-        <a href="index.html" class="font-marquee text-2xl text-cream">
-          ReBop<span class="text-rust">Hot</span>
-        </a>
-        <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
-          <a
-            class="rounded-sm bg-stage-soft px-3 py-1.5 text-gold"
-            href="index.html"
-            >Home</a
-          >
-          <a
-            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
-            href="band.html"
-            >Band</a
-          >
-          <a
-            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
-            href="termine.html"
-            >Termine</a
-          >
-          <a
-            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
-            href="kontakt.html"
-            >Kontakt</a
-          >
-          <a
-            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
-            href="galerie.html"
-            >Galerie</a
-          >
-          <a
-            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
-            href="impressum.html"
-            >Impressum</a
-          >
-        </nav>
-      </div>
-    </header>
+    <!-- Navigation + footer are shared; they are filled by src/components.ts -->
+    <header id="site-header"></header>
 
     <main>
       <!-- ================= Hero: vintage poster ================= -->
@@ -145,37 +102,7 @@
       </section>
     </main>
 
-    <!-- ================= Footer ================= -->
-    <footer class="border-t-2 border-gold/60 bg-[#0f0a06]">
-      <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
-        <p class="font-marquee text-lg text-gold">
-          ReBop Hot &ndash; Vintage Dance Music
-        </p>
-        <p class="mt-2 text-cream-dim">
-          Karlsruhe, GERMANY | +49 151 65 98 76 54
-        </p>
-        <p class="mt-3 flex flex-wrap justify-center gap-6 uppercase tracking-[0.15em]">
-          <a
-            class="text-gold transition-colors hover:text-cream"
-            href="https://www.facebook.com/Re-Bop-Hot-100555619167395"
-            target="_blank"
-            rel="noopener"
-            >Facebook</a
-          >
-          <a
-            class="text-gold transition-colors hover:text-cream"
-            href="mailto:kontakt@rebophot.de"
-            >kontakt@rebophot.de</a
-          >
-          <a
-            class="text-gold transition-colors hover:text-cream"
-            href="impressum.html"
-            >Impressum</a
-          >
-        </p>
-      </div>
-    </footer>
-
+    <footer id="site-footer"></footer>
     <script type="module" src="/src/pages/home.ts"></script>
   </body>
 </html>

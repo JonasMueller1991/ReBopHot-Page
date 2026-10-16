@@ -20,19 +20,17 @@ npm run build   # type-checks with tsc, then bundles everything into dist/
 npm run preview # serves the production build from dist/
 ```
 
-## Tailwind CSS (homepage draft)
+## Tailwind CSS
 
 The project uses **Tailwind CSS v4** via the official Vite plugin
 (`@tailwindcss/vite` in `vite.config.ts`). Tailwind v4 needs no config file —
-the design tokens (colors, fonts, animations) live directly in `src/home.css`
+the design tokens (colors, fonts, animations) live directly in `src/tailwind.css`
 under `@theme`, e.g. `--color-gold` becomes the utility class `text-gold`.
 
-**The homepage (`index.html`) is the first page ported to Tailwind** and shows
-the 1960s/70s jump-blues design: marquee typography, a rotating starburst
-hero, a scrolling ticker and an admission-ticket style event banner. The other
-pages still use the classic `src/styles.css`. A good exercise: port them one by
-one to Tailwind (Band → Termine → Galerie → Kontakt → Impressum), reusing the
-`.btn-retro`, `.ticket` and `.starburst` components from `src/home.css`.
+**All pages use Tailwind.** Utility classes live directly in the HTML and in the
+TypeScript templates; only what utilities cannot express (`.starburst`,
+`.ticket` notches, `.btn-retro`) is plain CSS in `src/tailwind.css`. The shared
+header/footer markup is rendered by `src/components.ts`.
 
 ## Project structure
 
@@ -48,9 +46,8 @@ one to Tailwind (Band → Termine → Galerie → Kontakt → Impressum), reusin
 └── src/
     ├── types.ts          All shared interfaces (BandMember, BandEvent, ...)
     ├── data.ts           The "content database": members, events, contact info
-    ├── components.ts     Shared navigation + footer for the non-Tailwind pages
-    ├── styles.css        Classic CSS design (all pages except the homepage)
-    ├── home.css          Tailwind v4 entry: @theme tokens + vintage components
+    ├── components.ts     Shared navigation + footer (rendered with Tailwind)
+    ├── tailwind.css      Tailwind v4 entry: @theme tokens + vintage components
     └── pages/            One entry script per page
         ├── home.ts       Date logic: find the next upcoming gig
         ├── band.ts       Render member cards from typed data

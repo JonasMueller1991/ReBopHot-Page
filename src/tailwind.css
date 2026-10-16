@@ -1,8 +1,13 @@
 /* ============================================================
-   home.css — Tailwind CSS v4 draft of the homepage
-   Design: 1960s/70s jump-blues & swing poster look:
-   dark stage browns, cream, mustard gold, burnt orange and wine
-   red, marquee typography, ticket banners, starbursts.
+   tailwind.css — the design system of the whole site
+   Tailwind CSS v4 via the @tailwindcss/vite plugin.
+
+   1960s/70s jump-blues & swing poster look: dark stage browns,
+   cream, mustard gold, burnt orange and wine red, marquee
+   typography, ticket banners, starbursts.
+
+   Every page links this file; utility classes live in the HTML/TS,
+   only what utilities cannot express lives here.
    ============================================================ */
 
 @import "tailwindcss";
@@ -18,6 +23,8 @@
   --color-rust: #c05a2e;
   --color-wine: #a5342a;
   --color-teal: #3f7a6e;
+  --color-error: #e07a5f;
+  --color-success: #8fbf7f;
 
   --font-marquee: "Limelight", Georgia, serif;
   --font-display: "Playfair Display", Georgia, serif;

@@ -4,28 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impressum – ReBop Hot</title>
-    <link rel="stylesheet" href="/src/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&family=Oswald:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
-  <body>
+  <body class="min-h-screen font-condensed text-cream antialiased">
     <header id="site-header"></header>
 
-    <main class="container container-narrow">
-      <h1 class="page-title">Impressum</h1>
+    <main class="mx-auto max-w-3xl px-6 py-14">
+      <h1
+        class="border-b border-gold/40 pb-3 font-marquee text-3xl text-cream sm:text-4xl"
+      >
+        Impressum
+      </h1>
 
-      <section class="legal-text">
-        <h2>Angaben gemäß § 5 TMG</h2>
-        <p>
-          Dies ist ein <strong>Lernprojekt</strong> zum Üben von TypeScript nach dem
-          Vorbild der Website www.rebophot.de. Es handelt sich nicht um die echte
-          Website der Band ReBop Hot.
+      <section class="mt-10 leading-relaxed text-cream-dim">
+        <h2 class="font-display text-xl text-gold">Angaben gemäß § 5 TMG</h2>
+        <p class="mt-3">
+          Dies ist ein <strong class="text-cream">Lernprojekt</strong> zum Üben
+          von TypeScript nach dem Vorbild der Website www.rebophot.de. Es
+          handelt sich nicht um die echte Website der Band ReBop Hot.
         </p>
-        <p>
-          ReBop Hot – Vintage Dance Music<br />
+        <p class="mt-3">
+          ReBop Hot &ndash; Vintage Dance Music<br />
           Karlsruhe, Deutschland<br />
-          E-Mail: kontakt@rebophot.de
+          E-Mail:
+          <a class="text-gold transition-colors hover:text-cream" href="mailto:kontakt@rebophot.de">
+            kontakt@rebophot.de
+          </a>
         </p>
-        <h2>Haftungsausschluss</h2>
-        <p>
+
+        <h2 class="mt-8 font-display text-xl text-gold">Haftungsausschluss</h2>
+        <p class="mt-3">
           Alle Inhalte dieses Übungsprojekts dienen ausschließlich
           Ausbildungszwecken. Für Richtigkeit, Vollständigkeit und Aktualität
           der Inhalte wird keine Gewähr übernommen.

@@ -1,15 +1,17 @@
 /**
- * pages/home.ts — entry script of the start page (Tailwind draft).
+ * pages/home.ts — entry script of the start page.
  *
- * The header/footer of the homepage are plain HTML now, so this script
- * focuses on the one data-driven part: the "next gig" admission ticket.
+ * The shared header/footer come from src/components.ts (initChrome).
+ * This script handles the data-driven part: the "next gig" admission ticket.
  *
  * Demonstrates: importing shared modules, Date arithmetic, union types
  * (BandEvent | null) and template literals with Tailwind classes.
  */
-import { escapeHtml } from '../components'
+import { initChrome, escapeHtml } from '../components'
 import { events } from '../data'
 import type { BandEvent } from '../types'
+
+initChrome('home')
 
 /**
  * Returns the next upcoming event (or null if there is none).
@@ -55,7 +57,7 @@ function renderNextEvent(): void {
   // Union type in action: we must handle `null` before touching the event.
   if (nextEvent === null) {
     container.innerHTML = `
-      <p class="rounded-sm border-2 border-dashed border-gold/70 bg-stage-soft px-8 py-6 text-center font-display text-lg italic text-cream-dim">
+      <p class="rounded-lg border-2 border-dashed border-gold/70 bg-stage-soft px-8 py-6 text-center font-display text-lg italic text-cream-dim">
         Aktuell sind keine Termine geplant.
       </p>`
     return

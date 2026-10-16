@@ -4,20 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Termine – ReBop Hot</title>
-    <link rel="stylesheet" href="/src/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&family=Oswald:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
-  <body>
+  <body class="min-h-screen font-condensed text-cream antialiased">
     <header id="site-header"></header>
 
-    <main class="container">
-      <h1 class="page-title">Termine</h1>
+    <main class="mx-auto max-w-5xl px-6 py-14">
+      <h1
+        class="border-b border-gold/40 pb-3 font-marquee text-3xl text-cream sm:text-4xl"
+      >
+        Termine
+      </h1>
 
-      <!-- Filled by termine.ts: next upcoming event -->
-      <section id="upcoming-events"></section>
+      <!-- Filled by termine.ts: next upcoming events -->
+      <section id="upcoming-events" class="mt-10"></section>
 
       <!-- Filled by termine.ts: the long list of past gigs -->
-      <section id="past-events">
-        <h2>...alter Schnee von gestern: (schön war`s)</h2>
+      <section id="past-events" class="mt-16">
+        <h2 class="font-display text-xl italic text-cream-dim">
+          ...alter Schnee von gestern: (sch&ouml;n war`s)
+        </h2>
       </section>
     </main>
 

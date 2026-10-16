@@ -16,11 +16,17 @@ function renderContactDetails(): void {
   if (!section) return
 
   section.innerHTML = `
-    <address class="contact-details">
-      <p>${contact.city}, ${contact.country} | ${contact.phone}</p>
+    <address class="rounded-lg border border-gold/40 bg-stage-soft px-6 py-5 not-italic leading-relaxed text-cream-dim">
       <p>
-        <a href="mailto:${contact.email}">${contact.email}</a> ·
-        <a href="${contact.facebookUrl}" target="_blank" rel="noopener">Facebook</a>
+        ${contact.city}, ${contact.country} |
+        <a class="text-gold transition-colors hover:text-cream" href="tel:${contact.phone.replace(/\s/g, '')}">
+          ${contact.phone}
+        </a>
+      </p>
+      <p class="mt-2">
+        <a class="text-gold transition-colors hover:text-cream" href="mailto:${contact.email}">${contact.email}</a>
+        &middot;
+        <a class="text-gold transition-colors hover:text-cream" href="${contact.facebookUrl}" target="_blank" rel="noopener">Facebook</a>
       </p>
     </address>
   `

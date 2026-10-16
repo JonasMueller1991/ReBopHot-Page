@@ -19,5 +19,5 @@ const today = new Date().toLocaleDateString('de-DE', {
 const main = document.querySelector('main')
 main?.insertAdjacentHTML(
   'beforeend',
-  `<p class="page-hint">Stand: ${today} (dieser Hinweis wird per TypeScript eingefügt)</p>`,
+  `<p class="mt-8 text-sm italic text-cream-dim">Stand: ${today} (dieser Hinweis wird per TypeScript eingefügt)</p>`,
 )

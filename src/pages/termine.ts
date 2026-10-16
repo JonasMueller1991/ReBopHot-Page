@@ -22,33 +22,33 @@ function formatEventDate(date: string): string {
 
 /** Render one event as a card. */
 function eventCard(event: BandEvent, past: boolean): string {
-  const lines: string[] = []
-
-  lines.push(`<h3 class="event-title">${escapeHtml(event.title)}</h3>`)
-  lines.push(`<p class="event-date">${formatEventDate(event.date)}</p>`)
-  lines.push(`<p class="event-location">${escapeHtml(event.location)}</p>`)
-
-  // Optional fields: `event.time` may or may not exist — `?.` + `??` handle both.
-  const timeHtml = event.time ? `<p class="event-time">${escapeHtml(event.time)}</p>` : ''
-  lines.push(timeHtml)
+  // Optional fields: `event.time` may or may not exist.
+  const timeHtml = event.time
+    ? `<p class="mt-1 text-cream-dim">${escapeHtml(event.time)}</p>`
+    : ''
 
   const admissionHtml = event.admission
-    ? `<p class="event-admission">${escapeHtml(event.admission)}</p>`
+    ? `<p class="mt-1 text-teal">${escapeHtml(event.admission)}</p>`
     : ''
-  lines.push(admissionHtml)
 
-  const noteHtml = event.note ? `<p class="event-note">${escapeHtml(event.note)}</p>` : ''
-  lines.push(noteHtml)
+  const noteHtml = event.note
+    ? `<p class="mt-3 text-sm leading-relaxed text-cream-dim">${escapeHtml(event.note)}</p>`
+    : ''
 
   const cancelledHtml =
     event.cancelled === true
-      ? '<p class="event-cancelled">— Termin wurde abgesagt —</p>'
+      ? '<p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-error">&mdash; Termin wurde abgesagt &mdash;</p>'
       : ''
 
   return `
-    <article class="event-card ${past ? 'event-past' : ''}">
+    <article class="rounded-lg border border-gold/40 bg-stage-soft p-6 ${past ? 'opacity-75' : ''}">
       ${cancelledHtml}
-      ${lines.join('')}
+      <h3 class="font-display text-xl text-cream">${escapeHtml(event.title)}</h3>
+      <p class="mt-1 text-sm uppercase tracking-[0.15em] text-gold">${formatEventDate(event.date)}</p>
+      <p class="mt-1 text-cream-dim">${escapeHtml(event.location)}</p>
+      ${timeHtml}
+      ${admissionHtml}
+      ${noteHtml}
     </article>
   `
 }
@@ -70,15 +70,15 @@ function renderEvents(): void {
     .sort((a, b) => b.date.localeCompare(a.date))
 
   upcomingSection.innerHTML = upcoming.length
-    ? `<h2>Kommende Termine</h2>
-       <div class="event-list">
+    ? `<h2 class="font-marquee text-2xl text-gold">Kommende Termine</h2>
+       <div class="mt-6 grid gap-6">
          ${upcoming.map((event) => eventCard(event, false)).join('')}
        </div>`
-    : '<p>Aktuell sind keine neuen Termine geplant.</p>'
+    : '<p class="font-display text-lg italic text-cream-dim">Aktuell sind keine neuen Termine geplant.</p>'
 
   pastSection.insertAdjacentHTML(
     'beforeend',
-    `<div class="event-list event-list-past">
+    `<div class="mt-8 grid gap-6">
        ${past.map((event) => eventCard(event, true)).join('')}
      </div>`,
   )
