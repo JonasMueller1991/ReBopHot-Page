@@ -13,16 +13,20 @@
 @import "tailwindcss";
 
 /* Tailwind v4 theme tokens: every `--color-*` / `--font-*` becomes a
-   utility class (bg-stage, text-gold, font-marquee, ...). */
+   utility class (bg-stage, text-gold, font-marquee, ...).
+   Palette matched to the 2026 banner (measured from the image):
+   a black & white band photo on near-black (#070706) with a light
+   cream sky (#edeae2) and cream lettering (#fefae9) — so the site
+   uses charcoal + cream, brass-gold as accent, wine red for pops. */
 @theme {
-  --color-stage: #17110c;
-  --color-stage-soft: #241a10;
-  --color-cream: #f2e8d5;
-  --color-cream-dim: #cbbfa6;
-  --color-gold: #d9a441;
-  --color-rust: #c05a2e;
-  --color-wine: #a5342a;
-  --color-teal: #3f7a6e;
+  --color-stage: #0e0e0d;
+  --color-stage-soft: #1c1c1a;
+  --color-cream: #f5f3ec;
+  --color-cream-dim: #b0aca1;
+  --color-gold: #c3a05c;
+  --color-rust: #b8542f;
+  --color-wine: #8f3029;
+  --color-teal: #4f8377;
   --color-error: #e07a5f;
   --color-success: #8fbf7f;
 
@@ -46,12 +50,12 @@
   }
 }
 
-/* ---------- Page backdrop: warm spotlight behind the hero ---------- */
+/* ---------- Page backdrop: pale spotlight behind the hero ---------- */
 body {
   background-color: var(--color-stage);
   background-image: radial-gradient(
     ellipse 90% 55% at 50% -12%,
-    rgba(217, 164, 65, 0.16),
+    rgba(237, 234, 226, 0.07),
     transparent 62%
   );
   background-repeat: no-repeat;
@@ -59,11 +63,12 @@ body {
 
 /* ---------- Vintage components (plain CSS, used with utilities) ---------- */
 
-/* Slowly rotating 1950s-style starburst, placed behind the hero title. */
+/* Slowly rotating 1950s-style starburst, placed behind the hero title.
+   Cream-tinted to stay monochrome like the banner photo. */
 .starburst {
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(217, 164, 65, 0.09) 0deg 6deg,
+    rgba(245, 243, 236, 0.055) 0deg 6deg,
     transparent 6deg 12deg
   );
   border-radius: 50%;
@@ -125,7 +130,7 @@ body {
   background: transparent;
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
-  box-shadow: 4px 4px 0 rgba(217, 164, 65, 0.25);
+  box-shadow: 4px 4px 0 rgba(195, 160, 92, 0.22);
   font-family: var(--font-condensed);
   font-weight: 600;
   text-transform: uppercase;
@@ -141,5 +146,5 @@ body {
 
 .btn-retro-outline:hover {
   translate: 2px 2px;
-  box-shadow: 2px 2px 0 rgba(217, 164, 65, 0.25);
+  box-shadow: 2px 2px 0 rgba(195, 160, 92, 0.22);
 }

@@ -74,7 +74,7 @@ function renderFooter(): void {
   const footer = document.getElementById('site-footer')
   if (!footer) return
 
-  footer.className = 'border-t-2 border-gold/60 bg-[#0f0a06]'
+  footer.className = 'border-t-2 border-gold/60 bg-[#0a0a09]'
 
   footer.innerHTML = `
     <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
