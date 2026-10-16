@@ -10,7 +10,7 @@
  * from the @theme block in src/tailwind.css.
  */
 import type { PageName } from './types'
-import { bandName, contact } from './data'
+import { contact } from './data'
 
 /** Simple helper: escape text so it can be safely interpolated into HTML. */
 export function escapeHtml(text: string): string {
@@ -62,7 +62,7 @@ function renderHeader(activePage: PageName): void {
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
       <a
         href="index.html"
-        class="logo-letterpress font-marquee text-2xl tracking-[0.1em]"
+        class="logo-letterpress font-script text-3xl leading-none"
       >
         ReBopHot
       </a>
@@ -81,8 +81,11 @@ function renderFooter(): void {
 
   footer.innerHTML = `
     <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
-      <p class="logo-letterpress font-marquee text-lg">
-        ${bandName} &ndash; Vintage Dance Music
+      <p class="logo-letterpress font-script text-2xl leading-snug">
+        ReBopHot
+      </p>
+      <p class="mt-1 text-xs uppercase tracking-[0.3em] text-cream-dim">
+        Vintage Dance Music
       </p>
       <p class="mt-2 text-cream-dim">
         ${contact.city}, ${contact.country} |

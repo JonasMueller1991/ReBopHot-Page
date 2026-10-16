@@ -34,6 +34,9 @@
   --font-marquee: "Limelight", Georgia, serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-condensed: "Oswald", "Arial Narrow", sans-serif;
+  /* Script for the band wordmark (the banner's cursive "Schriftzug").
+     Alternatives worth trying: Yellowtail, Satisfy, Grand Hotel. */
+  --font-script: "Pacifico", cursive;
 
   --animate-marquee: marquee 32s linear infinite;
   --animate-starburst: spin 90s linear infinite;
