@@ -62,9 +62,9 @@ function renderHeader(activePage: PageName): void {
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
       <a
         href="index.html"
-        class="logo-letterpress font-marquee text-2xl"
+        class="logo-letterpress font-marquee text-2xl tracking-[0.1em]"
       >
-        ReBop Hot
+        ReBopHot
       </a>
       <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
         ${linkHtml}
@@ -81,7 +81,7 @@ function renderFooter(): void {
 
   footer.innerHTML = `
     <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
-      <p class="font-marquee text-lg text-gold">
+      <p class="logo-letterpress font-marquee text-lg">
         ${bandName} &ndash; Vintage Dance Music
       </p>
       <p class="mt-2 text-cream-dim">

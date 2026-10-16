@@ -105,12 +105,20 @@ body {
 /* Lettering treatment modeled on the 2026 banner wordmark:
    warm cream (#f5ebd4, measured from the image) with a dark
    letterpress edge and a faint glow — like light catching the
-   painted logo on the photo. Used for the header logo. */
+   painted logo on the photo. Used for the header logo and the
+   band name in the footer; the glow intensifies on hover. */
 .logo-letterpress {
   color: var(--color-cream-warm);
   text-shadow:
     0 2px 0 rgba(0, 0, 0, 0.55),
     0 0 28px rgba(245, 235, 212, 0.22);
+  transition: text-shadow 150ms ease;
+}
+
+.logo-letterpress:hover {
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.55),
+    0 0 44px rgba(245, 235, 212, 0.45);
 }
 
 /* Retro buttons with a hard offset shadow ("pressed print" feel). */
