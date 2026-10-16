@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Band – ReBop Hot</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container">
+      <h1 class="page-title">Band</h1>
+
+      <section class="band-intro">
+        <p class="tagline">– Ready to dance? –</p>
+        <p id="band-description"></p>
+      </section>
+
+      <!-- Member cards are generated from src/data.ts by band.ts -->
+      <section id="member-grid" class="member-grid"></section>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/band.ts"></script>
+  </body>
+</html>

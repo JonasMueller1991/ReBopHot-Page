@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerie – ReBop Hot</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container">
+      <h1 class="page-title">Galerie</h1>
+      <p>Eindrücke von unseren Auftritten – klicken Sie auf ein Bild zum Vergrößern.</p>
+
+      <!-- Picture grid is generated from src/data.ts by galerie.ts -->
+      <section id="gallery-grid" class="gallery-grid"></section>
+
+      <!-- A simple lightbox, hidden until a picture is clicked -->
+      <div id="lightbox" class="lightbox" hidden>
+        <div class="lightbox-inner">
+          <div class="lightbox-picture"></div>
+          <p class="lightbox-caption"></p>
+          <button type="button" class="btn btn-outline lightbox-close">Schließen</button>
+        </div>
+      </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/galerie.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt – ReBop Hot</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main class="container container-narrow">
+      <h1 class="page-title">Kontakt</h1>
+
+      <!-- Contact details are filled in by kontakt.ts -->
+      <section id="contact-details"></section>
+
+      <h2>Anfrage senden</h2>
+      <p>
+        Sie möchten uns für eine Veranstaltung buchen? Schreiben Sie uns –
+        wir melden uns so schnell wie möglich bei Ihnen.
+      </p>
+
+      <!-- The form is validated in TypeScript, see src/pages/kontakt.ts -->
+      <form id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" />
+          <span class="error" data-error-for="name"></span>
+        </div>
+        <div class="form-field">
+          <label for="email">E-Mail *</label>
+          <input type="email" id="email" name="email" />
+          <span class="error" data-error-for="email"></span>
+        </div>
+        <div class="form-field">
+          <label for="date">Veranstaltungsdatum (optional)</label>
+          <input type="date" id="date" name="date" />
+          <span class="error" data-error-for="date"></span>
+        </div>
+        <div class="form-field">
+          <label for="message">Nachricht *</label>
+          <textarea id="message" name="message" rows="6"></textarea>
+          <span class="error" data-error-for="message"></span>
+        </div>
+        <button type="submit" class="btn">Absenden</button>
+        <p id="form-success" class="success" hidden>
+          Vielen Dank! Ihre Nachricht wurde (nur im Browser) gespeichert.
+        </p>
+      </form>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/kontakt.ts"></script>
+  </body>
+</html>

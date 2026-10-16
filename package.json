@@ -1,0 +1,16 @@
+{
+  "name": "rebophot-typescript",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A TypeScript learning project recreating a band website like www.rebophot.de",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}
