@@ -1,0 +1,138 @@
+/* ============================================================
+   home.css — Tailwind CSS v4 draft of the homepage
+   Design: 1960s/70s jump-blues & swing poster look:
+   dark stage browns, cream, mustard gold, burnt orange and wine
+   red, marquee typography, ticket banners, starbursts.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* Tailwind v4 theme tokens: every `--color-*` / `--font-*` becomes a
+   utility class (bg-stage, text-gold, font-marquee, ...). */
+@theme {
+  --color-stage: #17110c;
+  --color-stage-soft: #241a10;
+  --color-cream: #f2e8d5;
+  --color-cream-dim: #cbbfa6;
+  --color-gold: #d9a441;
+  --color-rust: #c05a2e;
+  --color-wine: #a5342a;
+  --color-teal: #3f7a6e;
+
+  --font-marquee: "Limelight", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-condensed: "Oswald", "Arial Narrow", sans-serif;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-starburst: spin 90s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* ---------- Page backdrop: warm spotlight behind the hero ---------- */
+body {
+  background-color: var(--color-stage);
+  background-image: radial-gradient(
+    ellipse 90% 55% at 50% -12%,
+    rgba(217, 164, 65, 0.16),
+    transparent 62%
+  );
+  background-repeat: no-repeat;
+}
+
+/* ---------- Vintage components (plain CSS, used with utilities) ---------- */
+
+/* Slowly rotating 1950s-style starburst, placed behind the hero title. */
+.starburst {
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(217, 164, 65, 0.09) 0deg 6deg,
+    transparent 6deg 12deg
+  );
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+/* Ticket-style event banner with punched-out side notches. */
+.ticket {
+  position: relative;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 9999px;
+  background: var(--color-stage);
+  transform: translateY(-50%);
+}
+
+.ticket::before {
+  left: -0.8rem;
+}
+
+.ticket::after {
+  right: -0.8rem;
+}
+
+/* Retro buttons with a hard offset shadow ("pressed print" feel). */
+.btn-retro {
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  background: var(--color-gold);
+  color: var(--color-stage);
+  border: 2px solid var(--color-gold);
+  box-shadow: 4px 4px 0 var(--color-wine);
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    translate 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.btn-retro:hover {
+  translate: 2px 2px;
+  box-shadow: 2px 2px 0 var(--color-wine);
+}
+
+.btn-retro-outline {
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  box-shadow: 4px 4px 0 rgba(217, 164, 65, 0.25);
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    translate 120ms ease,
+    box-shadow 120ms ease,
+    color 120ms ease,
+    background-color 120ms ease;
+}
+
+.btn-retro-outline:hover {
+  translate: 2px 2px;
+  box-shadow: 2px 2px 0 rgba(217, 164, 65, 0.25);
+}

@@ -4,37 +4,178 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReBop Hot – Vintage Dance Music</title>
-    <link rel="stylesheet" href="/src/styles.css" />
+
+    <!-- Vintage typography: marquee (Limelight), display serif (Playfair), condensed (Oswald) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&family=Oswald:wght@400;600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind draft of the homepage (all other pages still use styles.css) -->
+    <link rel="stylesheet" href="/src/home.css" />
   </head>
-  <body>
-    <header id="site-header"></header>
+  <body class="min-h-screen font-condensed text-cream antialiased">
+    <!-- ================= Header ================= -->
+    <header
+      class="sticky top-0 z-20 border-b-2 border-gold/60 bg-stage/85 backdrop-blur"
+    >
+      <div
+        class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3"
+      >
+        <a href="index.html" class="font-marquee text-2xl text-cream">
+          ReBop<span class="text-rust">Hot</span>
+        </a>
+        <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
+          <a
+            class="rounded-sm bg-stage-soft px-3 py-1.5 text-gold"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
+            href="band.html"
+            >Band</a
+          >
+          <a
+            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
+            href="termine.html"
+            >Termine</a
+          >
+          <a
+            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
+            href="kontakt.html"
+            >Kontakt</a
+          >
+          <a
+            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
+            href="galerie.html"
+            >Galerie</a
+          >
+          <a
+            class="rounded-sm px-3 py-1.5 text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream"
+            href="impressum.html"
+            >Impressum</a
+          >
+        </nav>
+      </div>
+    </header>
 
     <main>
-      <!-- Hero section: the big banner with the band name -->
-      <section class="hero">
-        <h1 class="hero-title">ReBop Hot</h1>
-        <p class="hero-tagline">– Ready to dance? –</p>
-        <p class="hero-sub">Swing &amp; Jump-Blues aus Karlsruhe / Kraichgau / Pfalz</p>
+      <!-- ================= Hero: vintage poster ================= -->
+      <section class="relative overflow-hidden border-b-2 border-gold/60">
+        <!-- Slowly rotating starburst behind the band name -->
+        <div
+          class="starburst animate-starburst pointer-events-none absolute left-1/2 top-1/2 h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2"
+          aria-hidden="true"
+        ></div>
+
+        <div class="relative mx-auto max-w-4xl px-6 py-28 text-center">
+          <p class="mb-6 text-xs uppercase tracking-[0.4em] text-gold sm:text-sm">
+            Karlsruhe · Kraichgau · Pfalz
+          </p>
+
+          <h1
+            class="font-marquee leading-none text-cream"
+            style="font-size: clamp(3rem, 11vw, 6.5rem); text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45)"
+          >
+            Re<span class="text-rust">Bop</span> Hot
+          </h1>
+
+          <p class="mt-8 font-display text-2xl italic text-gold">
+            &ndash; Ready to dance? &ndash;
+          </p>
+          <p class="mt-3 uppercase tracking-[0.25em] text-cream-dim">
+            Swing &amp; Jump-Blues · Vintage Dance Music
+          </p>
+
+          <div class="mt-10 flex flex-wrap justify-center gap-5">
+            <a href="termine.html" class="btn-retro">Zu den Terminen</a>
+            <a href="band.html" class="btn-retro-outline">Zur Band</a>
+          </div>
+        </div>
       </section>
 
-      <!-- The next upcoming gig is filled in by TypeScript -->
-      <section id="next-event" class="container"></section>
+      <!-- ================= Marquee ticker (very 1960s) ================= -->
+      <div
+        class="overflow-hidden border-b border-gold/40 bg-wine py-2"
+        aria-hidden="true"
+      >
+        <div class="animate-marquee flex w-max">
+          <span
+            class="shrink-0 whitespace-nowrap text-sm uppercase tracking-[0.3em] text-cream/90"
+          >
+            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦
+            Jitterbug ✦ Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦
+            Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
+            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦
+          </span>
+          <span
+            class="shrink-0 whitespace-nowrap text-sm uppercase tracking-[0.3em] text-cream/90"
+          >
+            Swing ✦ Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦
+            Jitterbug ✦ Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦ Swing ✦
+            Jump Blues ✦ Vintage Dance Music ✦ Lindy Hop ✦ Jitterbug ✦
+            Boogie-Woogie ✦ Rock&rsquo;n&rsquo;Roll ✦
+          </span>
+        </div>
+      </div>
 
-      <section class="container home-intro">
-        <h2>Die Band</h2>
-        <p>
-          Die neunköpfige Swing- &amp; Jump-Blues-Combo bringt mit Rhythmusgruppe,
-          Bläsersatz, Sängerin und zwei Sängern Vintage Dance Music auf die Bühne –
-          tanzbar von Jive über Lindy-Hop bis Boogie-Woogie.
+      <!-- ================= Next event: admission ticket ================= -->
+      <!-- Filled in by src/pages/home.ts -->
+      <section id="next-event" class="mx-auto max-w-3xl px-6 pt-16"></section>
+
+      <!-- ================= Band teaser ================= -->
+      <section class="mx-auto max-w-4xl px-6 py-20 text-center">
+        <p class="mb-4 text-xs uppercase tracking-[0.4em] text-gold">
+          ✦ ✦ ✦
         </p>
-        <p class="home-actions">
-          <a class="btn" href="band.html">Zur Band</a>
-          <a class="btn btn-outline" href="termine.html">Zu den Terminen</a>
+        <h2 class="font-marquee text-3xl text-cream sm:text-4xl">Die Band</h2>
+        <p class="mx-auto mt-6 max-w-2xl font-display text-lg text-cream-dim">
+          Die neunköpfige Swing- &amp; Jump-Blues-Combo bringt mit
+          Rhythmusgruppe, Bläsersatz, Sängerin und zwei Sängern Vintage Dance
+          Music auf die Bühne &ndash; tanzbar von Jive über Lindy-Hop bis
+          Boogie-Woogie.
+        </p>
+        <p class="mt-8 uppercase tracking-[0.25em] text-xs text-cream-dim">
+          Standards von George Gershwin bis Ray Charles &ndash; und jede Menge
+          weniger bekannte Kostbarkeiten
         </p>
       </section>
     </main>
 
-    <footer id="site-footer"></footer>
+    <!-- ================= Footer ================= -->
+    <footer class="border-t-2 border-gold/60 bg-[#0f0a06]">
+      <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
+        <p class="font-marquee text-lg text-gold">
+          ReBop Hot &ndash; Vintage Dance Music
+        </p>
+        <p class="mt-2 text-cream-dim">
+          Karlsruhe, GERMANY | +49 151 65 98 76 54
+        </p>
+        <p class="mt-3 flex flex-wrap justify-center gap-6 uppercase tracking-[0.15em]">
+          <a
+            class="text-gold transition-colors hover:text-cream"
+            href="https://www.facebook.com/Re-Bop-Hot-100555619167395"
+            target="_blank"
+            rel="noopener"
+            >Facebook</a
+          >
+          <a
+            class="text-gold transition-colors hover:text-cream"
+            href="mailto:kontakt@rebophot.de"
+            >kontakt@rebophot.de</a
+          >
+          <a
+            class="text-gold transition-colors hover:text-cream"
+            href="impressum.html"
+            >Impressum</a
+          >
+        </p>
+      </div>
+    </footer>
+
     <script type="module" src="/src/pages/home.ts"></script>
   </body>
 </html>

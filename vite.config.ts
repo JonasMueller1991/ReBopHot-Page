@@ -1,9 +1,15 @@
+/**
+ * vite.config.ts
+ * Multi-page setup: every page of the site is its own HTML file,
+ * each loading its own TypeScript entry from src/pages/.
+ * The Tailwind CSS v4 plugin scans all HTML/TS files for utility classes.
+ */
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
-// Multi-page setup: every page of the site is its own HTML file,
-// each loading its own TypeScript entry from src/pages/.
 export default defineConfig({
+  plugins: [tailwindcss()],
   build: {
     rollupOptions: {
       input: {
