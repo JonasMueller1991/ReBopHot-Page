@@ -63,16 +63,17 @@ body {
 
 /* ---------- Vintage components (plain CSS, used with utilities) ---------- */
 
-/* Slowly rotating 1950s-style starburst, placed behind the hero title.
-   Cream-tinted to stay monochrome like the banner photo. */
+/* Slowly rotating 1950s-style starburst, placed behind the hero banner.
+   Cream-tinted to stay monochrome; chunky rays so it reads clearly
+   in the visible margin around the (opaque) banner photo. */
 .starburst {
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(245, 243, 236, 0.055) 0deg 6deg,
-    transparent 6deg 12deg
+    rgba(245, 243, 236, 0.11) 0deg 7deg,
+    transparent 7deg 14deg
   );
   border-radius: 50%;
-  filter: blur(3px);
+  filter: blur(2px);
 }
 
 /* Ticket-style event banner with punched-out side notches. */
