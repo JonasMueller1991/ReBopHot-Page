@@ -9,7 +9,7 @@ import type {
   BandMember,
   BandEvent,
   ContactInfo,
-  GalleryPicture,
+  GallerySection,
 } from './types'
 
 export const bandName = 'ReBop Hot'
@@ -151,85 +151,121 @@ export const contact: ContactInfo = {
 
 /**
  * The real photos from www.rebophot.de, downloaded into public/images/.
+ * Grouped by event: each section has a short heading and its pictures.
  * Credits: band photos by Dominik Frank (2018/2022 shooting),
  * concert photos by the venues/band. Private learning use only.
  */
-export const galleryPictures: GalleryPicture[] = [
+export const gallerySections: GallerySection[] = [
   {
-    title: 'ReBop Hot 2022',
-    src: '/images/band-2022.jpg',
-    alt: 'Die Band ReBop Hot vor einer Wand, Fotoshooting August 2022',
-    width: 1920,
-    height: 1275,
+    title: 'Band-Shooting 2022',
+    pictures: [
+      {
+        title: 'ReBop Hot 2022',
+        src: '/images/band-2022.jpg',
+        alt: 'Die Band ReBop Hot vor einer Wand, Fotoshooting August 2022',
+        width: 1920,
+        height: 1275,
+      },
+    ],
   },
   {
-    title: 'ReBop Hot 2018',
-    src: '/images/band-2018.png',
-    alt: 'Die Band ReBop Hot, Fotoshooting November 2018',
-    width: 1920,
-    height: 1154,
+    title: 'Band-Shooting 2018',
+    pictures: [
+      {
+        title: 'ReBop Hot 2018',
+        src: '/images/band-2018.png',
+        alt: 'Die Band ReBop Hot, Fotoshooting November 2018',
+        width: 1920,
+        height: 1154,
+      },
+    ],
   },
   {
-    title: 'Gesang: Ilse, Jakob und Martin',
-    src: '/images/gesang.jpg',
-    alt: 'Die Sängerin und die zwei Sänger von ReBop Hot',
-    width: 1920,
-    height: 1172,
+    title: 'Band-Porträts',
+    pictures: [
+      {
+        title: 'Gesang: Ilse, Jakob und Martin',
+        src: '/images/gesang.jpg',
+        alt: 'Die Sängerin und die zwei Sänger von ReBop Hot',
+        width: 1920,
+        height: 1172,
+      },
+      {
+        title: 'Bläsersatz',
+        src: '/images/blaesersatz.jpg',
+        alt: 'Der Bläsersatz von ReBop Hot mit Saxophonen und Posaune',
+        width: 1920,
+        height: 1189,
+      },
+    ],
   },
   {
-    title: 'Bläsersatz',
-    src: '/images/blaesersatz.jpg',
-    alt: 'Der Bläsersatz von ReBop Hot mit Saxophonen und Posaune',
-    width: 1920,
-    height: 1189,
+    title: 'Badenweiler 2024',
+    pictures: [
+      {
+        title: 'Kur- und Festspielhaus Badenweiler 2024',
+        src: '/images/badenweiler-1.jpg',
+        alt: 'ReBop Hot auf der Konzertmuschel in Badenweiler, Juli 2024',
+        width: 1920,
+        height: 1277,
+      },
+      {
+        title: 'Kur- und Festspielhaus Badenweiler 2024',
+        src: '/images/badenweiler-2.jpg',
+        alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+        width: 1920,
+        height: 1277,
+      },
+      {
+        title: 'Kur- und Festspielhaus Badenweiler 2024',
+        src: '/images/badenweiler-3.jpg',
+        alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
+        width: 1920,
+        height: 1277,
+      },
+    ],
   },
   {
-    title: 'Kur- und Festspielhaus Badenweiler 2024',
-    src: '/images/badenweiler-1.jpg',
-    alt: 'ReBop Hot auf der Konzertmuschel in Badenweiler, Juli 2024',
-    width: 1920,
-    height: 1277,
+    title: 'Bruchsal 2024',
+    pictures: [
+      {
+        title: 'Genuss- und Gläserklang Bruchsal 2024',
+        src: '/images/bruchsal-1.jpg',
+        alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+        width: 1920,
+        height: 1081,
+      },
+      {
+        title: 'Genuss- und Gläserklang Bruchsal 2024',
+        src: '/images/bruchsal-3.jpg',
+        alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
+        width: 1920,
+        height: 1081,
+      },
+    ],
   },
   {
-    title: 'Kur- und Festspielhaus Badenweiler 2024',
-    src: '/images/badenweiler-2.jpg',
-    alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
-    width: 1920,
-    height: 1277,
+    title: 'Bad Herrenalb 2022',
+    pictures: [
+      {
+        title: 'Sonntagskonzert im Kurpark Bad Herrenalb 2022',
+        src: '/images/kurpark-2022.jpg',
+        alt: 'Sonntagskonzert in der Kurhaus-Konzertmuschel Bad Herrenalb, Juli 2022',
+        width: 1815,
+        height: 875,
+      },
+    ],
   },
   {
-    title: 'Kur- und Festspielhaus Badenweiler 2024',
-    src: '/images/badenweiler-3.jpg',
-    alt: 'Konzert in der Konzertmuschel Badenweiler, Juli 2024',
-    width: 1920,
-    height: 1277,
-  },
-  {
-    title: 'Genuss- und Gläserklang Bruchsal 2024',
-    src: '/images/bruchsal-1.jpg',
-    alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
-    width: 1920,
-    height: 1081,
-  },
-  {
-    title: 'Genuss- und Gläserklang Bruchsal 2024',
-    src: '/images/bruchsal-3.jpg',
-    alt: 'Open-Air-Konzert im Luisenpark Bruchsal, Juni 2024',
-    width: 1920,
-    height: 1081,
-  },
-  {
-    title: 'Sonntagskonzert im Kurpark Bad Herrenalb 2022',
-    src: '/images/kurpark-2022.jpg',
-    alt: 'Sonntagskonzert in der Kurhaus-Konzertmuschel Bad Herrenalb, Juli 2022',
-    width: 1815,
-    height: 875,
-  },
-  {
-    title: "Swingin' Charlie im Tempel Karlsruhe 2019",
-    src: '/images/tempel-2019.jpg',
-    alt: "ReBop Hot in Action beim Swingin' Charlie im Kulturzentrum Tempel Karlsruhe, Oktober 2019",
-    width: 1920,
-    height: 485,
+    title: 'Tempel Karlsruhe 2019',
+    pictures: [
+      {
+        title: "Swingin' Charlie im Tempel Karlsruhe 2019",
+        src: '/images/tempel-2019.jpg',
+        alt: "ReBop Hot in Action beim Swingin' Charlie im Kulturzentrum Tempel Karlsruhe, Oktober 2019",
+        width: 1920,
+        height: 485,
+      },
+    ],
   },
 ]

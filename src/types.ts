@@ -51,3 +51,10 @@ export interface GalleryPicture {
   width: number
   height: number
 }
+
+/** One gallery section: a single event/shooting with its pictures. */
+export interface GallerySection {
+  /** Short event heading, e.g. "Badenweiler 2024" */
+  title: string
+  pictures: GalleryPicture[]
+}
