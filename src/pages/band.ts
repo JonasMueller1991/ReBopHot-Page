@@ -4,7 +4,7 @@
  * Thin DOM wiring: the logic lives in src/lib/ (unit-tested there).
  */
 import { initChrome, qs } from '@/components'
-import { bandDescription, bandMembers } from '@/data'
+import { bandDescription, bandIntro, bandMembers } from '@/data'
 import { escapeHtml } from '@/lib/escape'
 import type { BandMember } from '@/types'
 
@@ -16,7 +16,9 @@ function memberCard(member: BandMember): string {
   const initials = member.name.slice(0, 2).toUpperCase()
 
   return `
-    <article class="rounded-lg border border-gold/40 bg-stage-soft p-6 text-center">
+    <article
+      class="w-full rounded-lg border border-gold/40 bg-stage-soft p-6 text-center sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)]"
+    >
       <div
         class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold to-rust font-marquee text-2xl text-stage"
         aria-hidden="true"
@@ -35,6 +37,10 @@ function memberCard(member: BandMember): string {
   `
 }
 
+function renderIntro(): void {
+  qs<HTMLElement>('#band-intro').textContent = bandIntro
+}
+
 function renderDescription(): void {
   // whitespace-pre-line on the <p> renders the \n\n in data.ts as paragraphs
   qs<HTMLElement>('#band-description').textContent = bandDescription
@@ -47,5 +53,6 @@ function renderMembers(): void {
     .join('')
 }
 
+renderIntro()
 renderDescription()
 renderMembers()

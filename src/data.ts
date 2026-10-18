@@ -19,7 +19,8 @@ export const bandTagline = 'Ready to dance?'
 export const bandIntro =
   'Die neunköpfige Swing- & Jump-Blues-Combo ReBop Hot aus den Regionen ' +
   'Karlsruhe/Kraichgau/Pfalz bringt mit Rhythmusgruppe, Bläsersatz, Sängerin ' +
-  'und zwei Sängern Vintage Dance Music auf die Bühne.'
+  'und zwei Sängern Vintage Dance Music auf die Bühne – tanzbar von Jive über ' +
+  'Lindy-Hop bis Boogie-Woogie.'
 
 export const bandDescription = [
   'Der Swing der 1930er Jahre geht Tänzerinnen und Tänzern ebenso in die ' +

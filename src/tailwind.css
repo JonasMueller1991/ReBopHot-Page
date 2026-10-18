@@ -39,7 +39,7 @@
   --font-script: 'Pacifico', cursive;
 
   --animate-marquee: marquee 32s linear infinite;
-  --animate-starburst: spin 90s linear infinite;
+  --animate-starburst: spin 160s linear infinite;
 
   @keyframes marquee {
     to {

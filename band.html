@@ -32,18 +32,24 @@
         <p class="font-display text-2xl text-gold italic">
           &ndash; Ready to dance? &ndash;
         </p>
-        <!-- Band description is filled in by src/pages/band.ts;
+        <!-- Band intro + description are filled in by src/pages/band.ts;
              whitespace-pre-line turns the \n\n in data.ts into paragraphs -->
+        <p
+          id="band-intro"
+          class="mt-6 font-display text-lg leading-relaxed text-cream-dim"
+        ></p>
         <p
           id="band-description"
           class="mt-6 font-display text-lg leading-relaxed whitespace-pre-line text-cream-dim"
         ></p>
       </section>
 
-      <!-- Member cards are generated from src/data.ts by band.ts -->
+      <!-- Member cards are generated from src/data.ts by band.ts.
+           Flexbox instead of grid: justify-center also centers the last,
+           incomplete row (grid would left-align leftover cards). -->
       <section
         id="member-grid"
-        class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        class="mt-12 flex flex-wrap justify-center gap-6"
       ></section>
     </main>
 
