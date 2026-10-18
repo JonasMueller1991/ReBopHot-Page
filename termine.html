@@ -27,6 +27,13 @@
       >
         Termine
       </h1>
+      <p class="mt-4 max-w-2xl font-display text-cream-dim italic">
+        Klicken Sie auf einen Termin, um ein zugehöriges Bild zu &ouml;ffnen.
+      </p>
+      <p class="mt-2 max-w-2xl text-xs text-cream-dim/70">
+        Bilder/Flyer/Logos: entnommen aus der Termin-Seite von www.rebophot.de,
+        nur f&uuml;r privaten Lerngebrauch.
+      </p>
 
       <!-- Filled by termine.ts: next upcoming events -->
       <section id="upcoming-events" class="mt-10"></section>
@@ -37,6 +44,27 @@
           ...alter Schnee von gestern: (sch&ouml;n war`s)
         </h2>
       </section>
+
+      <!-- A simple lightbox, hidden until an event card is clicked. -->
+      <div
+        id="event-lightbox"
+        class="fixed inset-0 z-50 grid place-items-center bg-black/90 p-6"
+        hidden
+      >
+        <div class="text-center">
+          <img
+            class="lightbox-picture mx-auto w-[min(720px,85vw)] rounded-lg border-2 border-gold bg-black/40 object-contain"
+            src=""
+            alt=""
+          />
+          <p
+            class="lightbox-caption mt-4 tracking-[0.2em] text-cream-dim uppercase"
+          ></p>
+          <button type="button" class="btn-retro-outline lightbox-close mt-4">
+            Schließen
+          </button>
+        </div>
+      </div>
     </main>
 
     <footer id="site-footer"></footer>

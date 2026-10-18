@@ -56,6 +56,12 @@ export const events: BandEvent[] = [
     title: 'Weingut Klenert',
     location: 'Kraichtal',
     time: 'ab 18.00h',
+    photo: {
+      src: '/images/termine/klenert-2026.png',
+      alt: 'Hügel-Swing im Weingut Klenert in Kraichtal',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2026-09-28',
@@ -63,6 +69,12 @@ export const events: BandEvent[] = [
     location: 'Karlsruhe-Knielingen',
     time: 'ab ca. 13.00h',
     note: 'Durch den Verzicht auf unsere Gage unterstützen wir die Arbeit des Fördervereins zur Unterstützung der onkologischen Abteilung der Kinderklinik Karlsruhe e.V. (FUoKK).',
+    photo: {
+      src: '/images/termine/husarenlager-fuokk.jpg',
+      alt: 'Logo des Fördervereins zur Unterstützung der onkologischen Abteilung der Kinderklinik Karlsruhe e.V. (FUoKK)',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2026-09-26',
@@ -70,6 +82,12 @@ export const events: BandEvent[] = [
     location: 'Gaggenau, Anne-Maßen Platz',
     time: 'ab 16.00h',
     admission: 'Eintritt frei',
+    photo: {
+      src: '/images/termine/herbstmarkt-gaggenau.png',
+      alt: 'Flyer zum Herbstmarkt in Gaggenau',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2026-09-04',
@@ -78,6 +96,12 @@ export const events: BandEvent[] = [
     time: 'Einlass 19.30h, Konzertbeginn ca. 20.30h',
     admission: 'Eintritt: € 13,– / Clubmitglieder € 10,–',
     note: 'Achtung: Begrenzte Plätze! Der Jazzclub in Wiesloch ist eine urige/kuschelige Location – also kommt frühzeitig.',
+    photo: {
+      src: '/images/termine/jazzclub-wiesloch.jpg',
+      alt: 'Der Jazzclub 77 Weinstadt in Wiesloch',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2026-08-30',
@@ -86,6 +110,12 @@ export const events: BandEvent[] = [
     time: 'ab 18.00h',
     admission: 'Eintritt frei!',
     note: 'Ein bunter Mix aus Swing, Jazz und Jump-Blues. Zu unserer Vintage Dance Music ist Tanzen ausdrücklich erwünscht!',
+    photo: {
+      src: '/images/termine/kurpark-bad-schoenborn.png',
+      alt: 'Die Kurparkbühne im Kurpark Bad Schönborn',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2025-09-28',
@@ -94,6 +124,12 @@ export const events: BandEvent[] = [
     time: '15.00h – 18.00h',
     admission: 'Eintritt frei – Hutsammlung',
     cancelled: true,
+    photo: {
+      src: '/images/termine/augustiner-abgesagt.jpg',
+      alt: 'Hinweisbild: Der Termin im Augustiner Biergarten Bad Cannstatt wurde abgesagt',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2025-08-09',
@@ -102,6 +138,12 @@ export const events: BandEvent[] = [
     time: '18.00h – 21.00h',
     note: 'Unser erstes Konzert im Kurpark Bad Schönborn-Mingolsheim. Petticoat und Hawaiihemd welcome!',
     admission: 'Eintritt frei',
+    photo: {
+      src: '/images/termine/kurpark-bad-schoenborn.png',
+      alt: 'Die Kurparkbühne im Kurpark Bad Schönborn',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2025-07-27',
@@ -109,6 +151,12 @@ export const events: BandEvent[] = [
     location: 'Bühne vor der St. Alexander Kirche, 76437 Rastatt',
     time: '13.00h – 15.00h',
     admission: 'Eintritt frei',
+    photo: {
+      src: '/images/termine/stadtfest-rastatt.jpg',
+      alt: 'Das Stadtfest Rastatt am Marktplatz (Foto: Stadt Rastatt)',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2024-12-01',
@@ -116,6 +164,12 @@ export const events: BandEvent[] = [
     location: '76437 Rastatt',
     time: '18.00h – 20.00h',
     note: 'Christmas meets Vintage Dance Music: swingende Weihnachtsmusik und ein bunter Mix aus Swing, Jazz und Jump-Blues.',
+    photo: {
+      src: '/images/termine/weihnachtsmarkt-rastatt.jpeg',
+      alt: 'Der Weihnachtsmarkt in Rastatt',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2024-11-30',
@@ -123,6 +177,12 @@ export const events: BandEvent[] = [
     location: 'Gaggenau',
     time: '18.00h – 20.00h',
     note: 'Swingin\u2019 Christmas mit ReBop Hot und den Swing-Größen der 1930er bis 1950er.',
+    photo: {
+      src: '/images/termine/adventsmarkt-gaggenau.jpeg',
+      alt: 'Der Adventsmarkt in Gaggenau',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2024-08-16',
@@ -131,6 +191,12 @@ export const events: BandEvent[] = [
     time: 'ab 18.30h',
     admission: 'Eintritt frei – Hutspende',
     note: 'Eine Veranstaltung des Jazzclub Rheinstetten e.V.',
+    photo: {
+      src: '/images/termine/rheinstetten-jazzclub.png',
+      alt: 'Logo des Jazzclub Rheinstetten e.V.',
+      width: 1600,
+      height: 1000,
+    },
   },
   {
     date: '2024-07-21',
@@ -138,6 +204,12 @@ export const events: BandEvent[] = [
     location: 'Bühne am Marktplatz, 76437 Rastatt',
     time: '14.00h – 16.00h',
     admission: 'Eintritt frei',
+    photo: {
+      src: '/images/termine/stadtfest-rastatt.jpg',
+      alt: 'Das Stadtfest Rastatt am Marktplatz (Foto: Stadt Rastatt)',
+      width: 1600,
+      height: 1000,
+    },
   },
 ]
 

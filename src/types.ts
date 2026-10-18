@@ -29,6 +29,19 @@ export interface BandEvent {
   note?: string
   /** true if the event was called off (German: "abgesagt") */
   cancelled?: boolean
+  /** Picture of the event, opened in the lightbox when the card is clicked */
+  photo?: EventPhoto
+}
+
+/** A picture belonging to one event ("Termin"), from public/images/termine/. */
+export interface EventPhoto {
+  /** Path as served by Vite, e.g. "/images/termine/klenert-2026.png" */
+  src: string
+  /** Accessible description of the picture (also used as lightbox caption) */
+  alt: string
+  /** Intrinsic pixel size — rendered as width/height attributes to avoid layout shift */
+  width: number
+  height: number
 }
 
 /** Contact details shown in the footer and on the "Kontakt" page. */
