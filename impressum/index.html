@@ -16,6 +16,25 @@
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Apply the saved (or system) theme before first paint so the
+         page never flashes the wrong mode. Mirrors src/theme.ts. -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('rebophot-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+          document.documentElement.dataset.theme = theme
+        } catch (error) {
+          /* storage unavailable: keep the dark default */
+        }
+      })()
+    </script>
+
     <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
   <body class="min-h-screen font-condensed text-cream antialiased">

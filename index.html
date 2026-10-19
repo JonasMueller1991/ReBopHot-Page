@@ -17,6 +17,25 @@
     <meta property="og:image" content="/images/band-2022.jpg" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Apply the saved (or system) theme before first paint so the
+         page never flashes the wrong mode. Mirrors src/theme.ts. -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('rebophot-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+          document.documentElement.dataset.theme = theme
+        } catch (error) {
+          /* storage unavailable: keep the dark default */
+        }
+      })()
+    </script>
+
     <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
   <body class="min-h-screen font-condensed text-cream antialiased">
@@ -65,15 +84,16 @@
           </p>
 
           <div class="mt-8 flex flex-wrap justify-center gap-5">
-            <a href="termine.html" class="btn-retro">Zu den Terminen</a>
-            <a href="band.html" class="btn-retro-outline">Zur Band</a>
+            <a href="/termine/" class="btn-retro">Zu den Terminen</a>
+            <a href="/band/" class="btn-retro-outline">Zur Band</a>
           </div>
         </div>
       </section>
 
       <!-- ================= Marquee ticker (very 1960s) ================= -->
+      <!-- keep-dark: the wine stripe stays dark in light mode too -->
       <div
-        class="overflow-hidden border-b border-gold/40 bg-wine py-2"
+        class="keep-dark overflow-hidden border-b border-gold/40 bg-wine py-2"
         aria-hidden="true"
       >
         <div class="flex w-max animate-marquee">

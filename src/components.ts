@@ -26,6 +26,7 @@ import '@fontsource/playfair-display/600-italic.css'
 
 import type { PageName } from '@/types'
 import { contact } from '@/data'
+import { initTheme } from '@/theme'
 
 // ---------------------------------------------------------------------------
 // Typed DOM helpers
@@ -65,15 +66,16 @@ interface NavLink {
   label: string
 }
 
-/** The main menu — the same on every page. */
+/** The main menu — the same on every page.
+ *  Href are root-absolute so they work from every directory depth. */
 const navLinks: NavLink[] = [
-  { name: 'home', href: 'index.html', label: 'Home' },
-  { name: 'band', href: 'band.html', label: 'Band' },
-  { name: 'termine', href: 'termine.html', label: 'Termine' },
-  { name: 'kontakt', href: 'kontakt.html', label: 'Kontakt' },
-  { name: 'videos', href: 'videos.html', label: 'Musik & Video' },
-  { name: 'galerie', href: 'galerie.html', label: 'Galerie' },
-  { name: 'impressum', href: 'impressum.html', label: 'Impressum' },
+  { name: 'home', href: '/', label: 'Home' },
+  { name: 'band', href: '/band/', label: 'Band' },
+  { name: 'termine', href: '/termine/', label: 'Termine' },
+  { name: 'kontakt', href: '/kontakt/', label: 'Kontakt' },
+  { name: 'videos', href: '/videos/', label: 'Musik & Video' },
+  { name: 'galerie', href: '/galerie/', label: 'Galerie' },
+  { name: 'impressum', href: '/impressum/', label: 'Impressum' },
 ]
 
 /** Accessibility: the first tabbable element jumps straight to the content. */
@@ -84,7 +86,7 @@ function renderSkipLink(): void {
   link.href = '#main-content'
   link.textContent = 'Zum Inhalt springen'
   link.className =
-    'skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-gold focus:px-4 focus:py-2 focus:font-condensed focus:text-sm focus:text-stage'
+    'skip-link sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-gold-pop focus:px-4 focus:py-2 focus:font-condensed focus:text-sm focus:text-ink'
   document.body.prepend(link)
 }
 
@@ -108,14 +110,51 @@ function renderHeader(activePage: PageName): void {
   header.innerHTML = `
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
       <a
-        href="index.html"
+        href="/"
         class="logo-letterpress font-script text-3xl leading-none"
       >
         ReBopHot
       </a>
-      <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
-        ${linkHtml}
-      </nav>
+      <div class="flex flex-wrap items-center gap-4">
+        <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
+          ${linkHtml}
+        </nav>
+        <!-- Light/dark switch: a small jukebox-style key. The icons
+             state what clicking switches to (sun = go light, moon =
+             go dark); visibility is driven by html[data-theme] in
+             tailwind.css, the label by src/theme.ts. -->
+        <button
+          type="button"
+          id="theme-toggle"
+          class="grid h-9 w-9 place-items-center rounded-full border-2 border-gold/60 bg-stage-soft text-gold transition-colors hover:border-gold"
+          aria-label="Farbe wechseln"
+        >
+          <svg
+            class="theme-icon-sun h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"
+            />
+          </svg>
+          <svg
+            class="theme-icon-moon h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.6 14.6A8.5 8.5 0 0 1 9.4 3.4a8.5 8.5 0 1 0 11.2 11.2z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   `
 }
@@ -123,7 +162,9 @@ function renderHeader(activePage: PageName): void {
 function renderFooter(): void {
   const footer = qs<HTMLElement>('#site-footer')
 
-  footer.className = 'border-t-2 border-gold/60 bg-[#0a0a09]'
+  // The footer band follows the theme: near-black on the dark stage,
+  // deep paper under a bronze rule in light mode (--color-footer).
+  footer.className = 'border-t-2 border-gold/60 bg-footer'
 
   footer.innerHTML = `
     <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
@@ -140,7 +181,7 @@ function renderFooter(): void {
       <p class="mt-3 flex flex-wrap justify-center gap-6 uppercase tracking-[0.15em]">
         <a class="text-gold transition-colors hover:text-cream" href="${contact.facebookUrl}" target="_blank" rel="noopener">Facebook</a>
         <a class="text-gold transition-colors hover:text-cream" href="mailto:${contact.email}">${contact.email}</a>
-        <a class="text-gold transition-colors hover:text-cream" href="impressum.html">Impressum</a>
+        <a class="text-gold transition-colors hover:text-cream" href="/impressum/">Impressum</a>
       </p>
     </div>
   `
@@ -151,4 +192,5 @@ export function initChrome(activePage: PageName): void {
   renderSkipLink()
   renderHeader(activePage)
   renderFooter()
+  initTheme()
 }

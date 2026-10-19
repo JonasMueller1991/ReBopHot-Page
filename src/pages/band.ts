@@ -26,7 +26,7 @@ function memberCard(member: BandMember): string {
           ${member.photo.position ? `style="object-position: ${escapeHtml(member.photo.position)}"` : ''}
         />`
     : `<div
-          class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold to-rust font-marquee text-2xl text-stage"
+          class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold-pop to-rust font-marquee text-2xl text-ink"
           aria-hidden="true"
         >
           ${initials}

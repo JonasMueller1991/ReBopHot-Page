@@ -6,6 +6,11 @@
    cream, mustard gold, burnt orange and wine red, marquee
    typography, ticket banners, starbursts.
 
+   Two looks share one set of tokens: the dark stage (default) and
+   a light "aged poster" mode (html[data-theme='light']) — same
+   poster, printed on cream paper. Toggled by the sun/moon button
+   in the header; the choice is managed by src/theme.ts.
+
    Every page links this file; utility classes live in the HTML/TS,
    only what utilities cannot express lives here.
    ============================================================ */
@@ -21,10 +26,21 @@
 @theme {
   --color-stage: #0e0e0d;
   --color-stage-soft: #1c1c1a;
+  /* Footer band: near-black in dark mode, deep paper in light mode
+     (see the html[data-theme='light'] block below). */
+  --color-footer: #0a0a09;
+  /* "Ink" = the lettering ON gold fills (buttons, avatars). It is
+     what text-stage used to express; in light mode the page surface
+     becomes paper while ink stays dark espresso. */
+  --color-ink: #0e0e0d;
   --color-cream: #f5f3ec;
   --color-cream-warm: #f5ebd4;
   --color-cream-dim: #b0aca1;
   --color-gold: #c3a05c;
+  /* Mustard "fill" gold: backgrounds of buttons and avatars. It keeps
+     its value in BOTH modes (the light mode darkens --color-gold for
+     text contrast, while fills stay bright mustard with dark ink). */
+  --color-gold-pop: #c3a05c;
   --color-rust: #b8542f;
   --color-wine: #8f3029;
   --color-teal: #4f8377;
@@ -54,12 +70,91 @@
   }
 }
 
+/* ---------- Light & dark: one poster, two prints ----------
+   The dark stage is the brand default; the light mode is the same
+   1960s poster printed on aged cream paper: espresso ink instead of
+   cream lettering, bronze instead of brass, deeper paper cards.
+   Everything flips by re-pinning the --color-* tokens on
+   <html data-theme> — the utility classes and markup stay untouched.
+
+   Component values that are not tokens (spotlight glow, starburst
+   rays, letterpress shadows, offset shadows) live on plain :root vars
+   and are re-pinned alongside. */
+
+:root {
+  --spotlight: rgba(237, 234, 226, 0.07);
+  --starburst-ray: rgba(245, 243, 236, 0.11);
+  --logo-ink: #f5ebd4;
+  --logo-edge: rgba(0, 0, 0, 0.55);
+  --logo-glow: rgba(245, 235, 212, 0.22);
+  --logo-glow-strong: rgba(245, 235, 212, 0.45);
+  --btn-outline-shadow: rgba(195, 160, 92, 0.22);
+  --jukebox-rim: rgba(195, 160, 92, 0.5);
+}
+
+html[data-theme='light'] {
+  --color-stage: #f2edde;
+  --color-stage-soft: #e7e0cb;
+  --color-footer: #e7e0cb;
+  --color-ink: #1a1510;
+  --color-cream: #2b2317;
+  --color-cream-warm: #2b2317;
+  --color-cream-dim: #635a48;
+  --color-gold: #7d5a1a;
+  --color-rust: #a34a26;
+  --color-teal: #3a6a5e;
+  --color-error: #b23a20;
+  --color-success: #45703a;
+
+  --spotlight: rgba(195, 160, 92, 0.14);
+  --starburst-ray: rgba(43, 35, 23, 0.08);
+  --logo-ink: #2b2317;
+  --logo-edge: rgba(255, 255, 255, 0.5);
+  --logo-glow: rgba(160, 118, 40, 0.3);
+  --logo-glow-strong: rgba(160, 118, 40, 0.55);
+  --btn-outline-shadow: rgba(61, 42, 12, 0.2);
+  --jukebox-rim: rgba(125, 90, 26, 0.45);
+}
+
+/* Bands and overlays that stay dark in both modes — the marquee
+   ticker and the lightboxes are the poster's dark wine and espresso
+   stripes (the footer, by contrast, flips with the theme via its
+   own --color-footer token). Inside these bands the tokens are
+   re-pinned to the dark values so their cream lettering keeps
+   working in light mode. */
+html[data-theme='light'] .keep-dark {
+  --color-cream: #f5f3ec;
+  --color-cream-warm: #f5ebd4;
+  --color-cream-dim: #b0aca1;
+  --color-gold: #c3a05c;
+  --logo-ink: #f5ebd4;
+  --logo-edge: rgba(0, 0, 0, 0.55);
+  --logo-glow: rgba(245, 235, 212, 0.22);
+  --logo-glow-strong: rgba(245, 235, 212, 0.45);
+  --btn-outline-shadow: rgba(195, 160, 92, 0.22);
+}
+
+/* ---------- Header theme toggle: sun while dark, moon while light --
+   Each icon shows what the button switches TO; the other one is
+   hidden. The button itself is rendered by src/components.ts. */
+.theme-icon-moon {
+  display: none;
+}
+
+html[data-theme='light'] .theme-icon-sun {
+  display: none;
+}
+
+html[data-theme='light'] .theme-icon-moon {
+  display: block;
+}
+
 /* ---------- Page backdrop: pale spotlight behind the hero ---------- */
 body {
   background-color: var(--color-stage);
   background-image: radial-gradient(
     ellipse 90% 55% at 50% -12%,
-    rgba(237, 234, 226, 0.07),
+    var(--spotlight),
     transparent 62%
   );
   background-repeat: no-repeat;
@@ -82,7 +177,7 @@ textarea:focus-visible {
 .starburst {
   background: repeating-conic-gradient(
     from 0deg,
-    rgba(245, 243, 236, 0.11) 0deg 7deg,
+    var(--starburst-ray) 0deg 7deg,
     transparent 7deg 14deg
   );
   border-radius: 50%;
@@ -118,28 +213,31 @@ textarea:focus-visible {
    warm cream (#f5ebd4, measured from the image) with a dark
    letterpress edge and a faint glow — like light catching the
    painted logo on the photo. Used for the header logo and the
-   band name in the footer; the glow intensifies on hover. */
+   band name in the footer; the glow intensifies on hover.
+   The ink/edge/glow colors are theme vars: dark espresso with a
+   light emboss on the cream paper of light mode (the footer
+   re-pins the dark values — see .keep-dark above). */
 .logo-letterpress {
-  color: var(--color-cream-warm);
+  color: var(--logo-ink);
   text-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.55),
-    0 0 28px rgba(245, 235, 212, 0.22);
+    0 2px 0 var(--logo-edge),
+    0 0 28px var(--logo-glow);
   transition: text-shadow 150ms ease;
 }
 
 .logo-letterpress:hover {
   text-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.55),
-    0 0 44px rgba(245, 235, 212, 0.45);
+    0 2px 0 var(--logo-edge),
+    0 0 44px var(--logo-glow-strong);
 }
 
 /* Retro buttons with a hard offset shadow ("pressed print" feel). */
 .btn-retro {
   display: inline-block;
   padding: 0.65rem 1.6rem;
-  background: var(--color-gold);
-  color: var(--color-stage);
-  border: 2px solid var(--color-gold);
+  background: var(--color-gold-pop);
+  color: var(--color-ink);
+  border: 2px solid var(--color-gold-pop);
   box-shadow: 4px 4px 0 var(--color-wine);
   font-family: var(--font-condensed);
   font-weight: 600;
@@ -163,7 +261,7 @@ textarea:focus-visible {
   background: transparent;
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
-  box-shadow: 4px 4px 0 rgba(195, 160, 92, 0.22);
+  box-shadow: 4px 4px 0 var(--btn-outline-shadow);
   font-family: var(--font-condensed);
   font-weight: 600;
   text-transform: uppercase;
@@ -179,7 +277,7 @@ textarea:focus-visible {
 
 .btn-retro-outline:hover {
   translate: 2px 2px;
-  box-shadow: 2px 2px 0 rgba(195, 160, 92, 0.22);
+  box-shadow: 2px 2px 0 var(--btn-outline-shadow);
 }
 
 /* Jukebox push buttons for the "Musik & Video" page: cream lettering
@@ -194,7 +292,7 @@ textarea:focus-visible {
   letter-spacing: 0.15em;
   color: var(--color-cream-dim);
   background: var(--color-stage-soft);
-  border: 2px solid rgba(195, 160, 92, 0.5);
+  border: 2px solid var(--jukebox-rim);
   border-radius: 0.25rem;
   padding: 0.55rem 1.1rem;
   cursor: pointer;
@@ -215,9 +313,9 @@ textarea:focus-visible {
 }
 
 .jukebox-button[aria-pressed='true'] {
-  color: var(--color-stage);
-  background: var(--color-gold);
-  border-color: var(--color-gold);
+  color: var(--color-ink);
+  background: var(--color-gold-pop);
+  border-color: var(--color-gold-pop);
   translate: 3px 3px;
   box-shadow: none;
 }

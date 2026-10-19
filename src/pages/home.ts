@@ -47,7 +47,7 @@ function renderNextEvent(): void {
         ${weekday}, ${date} · ${escapeHtml(nextEvent.location)}
         ${nextEvent.time ? ' · ' + escapeHtml(nextEvent.time) : ''}
       </p>
-      <a href="termine.html" class="btn-retro mt-8">Alle Termine</a>
+      <a href="/termine/" class="btn-retro mt-8">Alle Termine</a>
     </div>
   `
 }

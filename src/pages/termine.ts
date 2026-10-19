@@ -3,7 +3,8 @@
  *
  * Thin DOM wiring: date formatting and the upcoming/past split live
  * in src/lib/ (unit-tested there). Clicking an event card opens the
- * picture of that event in a lightbox (see the markup in termine.html).
+ * picture of that event in a lightbox (see the markup in
+ * termine/index.html).
  */
 import { initChrome, qs } from '@/components'
 import { events } from '@/data'

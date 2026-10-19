@@ -25,7 +25,9 @@ npm run test:watch # Vitest in watch mode
 ## Project structure
 
 ```
-├── index.html … impressum.html   One HTML file per page
+├── index.html                    Home page (/)
+├── band/ … impressum/            One directory per page: <page>/index.html,
+│                                 served as clean URLs like /termine/
 ├── vite.config.ts                Vite 7: multi-page inputs + "@" path alias
 ├── vitest.config.ts              Unit test setup (node environment)
 ├── eslint.config.js              ESLint flat config (typescript-eslint)
