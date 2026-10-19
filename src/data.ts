@@ -326,7 +326,8 @@ export const contact: ContactInfo = {
  * Section order and picture captions follow the original page.
  * Credits: band shootings 2022/2018 by Dominik Frank,
  * Fotoshooting 2020 by Thomas Harlfinger, EGO photos (C) EGO-Gruppe,
- * concert photos by the venues/band. Private learning use only.
+ * concert photos by the venues/band. All photos remain the property of the
+ * band and their photographers.
  */
 export const gallerySections: GallerySection[] = [
   {
@@ -359,7 +360,8 @@ export const gallerySections: GallerySection[] = [
         height: 1277,
       },
       {
-        title: 'Kur- und Festspielhaus Badenweiler 2024: Samstag Nachmittag, die Sonne brennt, aber getanzt wurde trotzdem ;-)',
+        title:
+          'Kur- und Festspielhaus Badenweiler 2024: Samstag Nachmittag, die Sonne brennt, aber getanzt wurde trotzdem ;-)',
         src: '/images/galerie/badenweiler-2024/02-badenweiler-2024-154.jpg',
         alt: 'Kur- und Festspielhaus Badenweiler am 20.07.24',
         width: 1920,
@@ -392,7 +394,8 @@ export const gallerySections: GallerySection[] = [
         height: 1058,
       },
       {
-        title: 'Fini Resort Badenweiler 2024: wir haben die Open-Air Saison im Fini-Resort eröffnet',
+        title:
+          'Fini Resort Badenweiler 2024: wir haben die Open-Air Saison im Fini-Resort eröffnet',
         src: '/images/galerie/fini-resort-2024/02-fini-tisch.jpg',
         alt: 'Donnerstag-Live Konzert im Fini Resort Badenweiler, 18.07.24',
         width: 1920,
@@ -662,9 +665,9 @@ export const gallerySections: GallerySection[] = [
         height: 1080,
       },
       {
-        title: 'ReBopHot in Action im Tempel Karlsruhe Swingin\' Charlie 2019',
+        title: "ReBopHot in Action im Tempel Karlsruhe Swingin' Charlie 2019",
         src: '/images/galerie/tempel-swingin-charlie-2019/17-img-4845-6f20d187-80a5e671-d2ceb7f9.jpg',
-        alt: 'ReBopHot in Action im Tempel Karlsruhe Swingin\' Charlie 2019',
+        alt: "ReBopHot in Action im Tempel Karlsruhe Swingin' Charlie 2019",
         width: 1920,
         height: 485,
       },

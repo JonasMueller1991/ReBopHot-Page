@@ -17,7 +17,7 @@ function renderNextEvent(): void {
   const today = new Date()
   const nextEvent = findNextEvent(events, today)
 
-  // Union type in action: we must handle `null` before touching the event.
+  // No event in the future: show a friendly notice instead.
   if (nextEvent === null) {
     container.innerHTML = `
       <p class="rounded-lg border-2 border-dashed border-gold/70 bg-stage-soft px-8 py-6 text-center font-display text-lg italic text-cream-dim">

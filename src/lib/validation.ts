@@ -2,8 +2,7 @@
  * lib/validation.ts
  * ------------------
  * Form validation as pure functions. Every validator returns a
- * discriminated union: either { valid: true } or the error message.
- * The `hasError` type guard lets TypeScript narrow the union.
+ * result object: either { valid: true } or the error message.
  */
 
 /** Either ok, or a German error message for the user. */
@@ -52,7 +51,7 @@ export function validateMessage(value: string): Validation {
   return { valid: true }
 }
 
-/** TypeScript "type guard": narrows the union into the error case. */
+/** Returns true if validation failed; narrows the result to the error case. */
 export function hasError(
   result: Validation,
 ): result is { valid: false; error: string } {

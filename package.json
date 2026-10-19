@@ -1,9 +1,9 @@
 {
-  "name": "rebophot-typescript",
-  "version": "0.1.0",
+  "name": "rebophot-website",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A TypeScript learning project recreating a band website like www.rebophot.de",
+  "description": "Website of ReBop Hot – the swing & jump-blues combo from Karlsruhe",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

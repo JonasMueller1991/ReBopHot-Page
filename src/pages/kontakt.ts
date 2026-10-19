@@ -84,9 +84,8 @@ function setupForm(): void {
     const successMessage = qs<HTMLElement>('#form-success')
 
     if (allValid) {
-      // A real project would POST this to a server; for learning we
-      // keep the message in the browser only.
-      console.log('Kontaktanfrage:', { name, email, date, message })
+      // TODO: wire this up to a backend endpoint once one is available;
+      // until then the message is not sent anywhere.
       successMessage.hidden = false
       form.reset()
     } else {
