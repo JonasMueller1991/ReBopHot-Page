@@ -71,6 +71,7 @@ const navLinks: NavLink[] = [
   { name: 'band', href: 'band.html', label: 'Band' },
   { name: 'termine', href: 'termine.html', label: 'Termine' },
   { name: 'kontakt', href: 'kontakt.html', label: 'Kontakt' },
+  { name: 'videos', href: 'videos.html', label: 'Musik & Video' },
   { name: 'galerie', href: 'galerie.html', label: 'Galerie' },
   { name: 'impressum', href: 'impressum.html', label: 'Impressum' },
 ]

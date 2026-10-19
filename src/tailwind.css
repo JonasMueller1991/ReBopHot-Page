@@ -181,3 +181,43 @@ textarea:focus-visible {
   translate: 2px 2px;
   box-shadow: 2px 2px 0 rgba(195, 160, 92, 0.22);
 }
+
+/* Jukebox push buttons for the "Musik & Video" page: cream lettering
+   on a dark chrome key with a gold rim and a hard offset shadow. The
+   button whose video sits on the screen stays pressed in
+   (aria-pressed="true") — like a key someone is holding down. */
+.jukebox-button {
+  font-family: var(--font-condensed);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-cream-dim);
+  background: var(--color-stage-soft);
+  border: 2px solid rgba(195, 160, 92, 0.5);
+  border-radius: 0.25rem;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(143, 48, 41, 0.55);
+  transition:
+    translate 120ms ease,
+    box-shadow 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.jukebox-button:hover {
+  color: var(--color-cream);
+  border-color: var(--color-gold);
+  translate: 1px 1px;
+  box-shadow: 2px 2px 0 rgba(143, 48, 41, 0.55);
+}
+
+.jukebox-button[aria-pressed='true'] {
+  color: var(--color-stage);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  translate: 3px 3px;
+  box-shadow: none;
+}

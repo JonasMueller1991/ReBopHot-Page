@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musik &amp; Video – ReBop Hot</title>
+    <meta
+      name="description"
+      content="Musik und Videos von ReBop Hot: Live-Clips, Konzertmitschnitte und die jährlichen Weihnachts- und Neujahrsgrüße der Swing- & Jump-Blues-Combo aus Karlsruhe."
+    />
+    <meta property="og:title" content="Musik &amp; Video – ReBop Hot" />
+    <meta
+      property="og:description"
+      content="Live-Clips und Weihnachtsgrüße – abgespielt auf der ReBop-Hot-Video-Jukebox."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/band-2022.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="stylesheet" href="/src/tailwind.css" />
+  </head>
+  <body class="min-h-screen font-condensed text-cream antialiased">
+    <header id="site-header"></header>
+
+    <main id="main-content" class="mx-auto max-w-6xl px-6 py-14">
+      <h1
+        class="border-b border-gold/40 pb-3 font-marquee text-3xl text-cream sm:text-4xl"
+      >
+        Musik &amp; Video
+      </h1>
+      <p class="mt-4 max-w-2xl font-display text-cream-dim italic">
+        Eine Portion ReBop Hot zum Reinh&ouml;ren &ndash; drücken Sie einen
+        Knopf, und die Jukebox spielt.
+      </p>
+      <p class="mt-2 max-w-2xl text-xs text-cream-dim/70">
+        Die Videos werden erst beim Abspielen von YouTube geladen.
+      </p>
+
+      <!-- The jukebox: screen (facade/player) + push buttons are
+           generated from src/data.ts by src/pages/videos.ts -->
+      <div id="video-jukebox" class="mx-auto mt-12 max-w-3xl">
+        <!-- Marquee above the screen: the title of the cued-up video -->
+        <p
+          id="jukebox-now-playing"
+          class="text-center font-marquee text-xl text-gold sm:text-2xl"
+          aria-live="polite"
+        ></p>
+
+        <!-- The screen: thumbnail facade until a video is played -->
+        <div
+          id="jukebox-screen"
+          class="ticket mt-5 border-2 border-dashed border-gold/70 bg-stage-soft p-4"
+        ></div>
+
+        <!-- Push buttons, grouped into sections -->
+        <div id="jukebox-buttons" class="mt-12"></div>
+      </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/videos.ts"></script>
+  </body>
+</html>

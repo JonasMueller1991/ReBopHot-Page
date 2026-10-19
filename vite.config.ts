@@ -22,6 +22,7 @@ export default defineConfig({
         band: fileURLToPath(new URL('./band.html', import.meta.url)),
         termine: fileURLToPath(new URL('./termine.html', import.meta.url)),
         kontakt: fileURLToPath(new URL('./kontakt.html', import.meta.url)),
+        videos: fileURLToPath(new URL('./videos.html', import.meta.url)),
         galerie: fileURLToPath(new URL('./galerie.html', import.meta.url)),
         impressum: fileURLToPath(new URL('./impressum.html', import.meta.url)),
       },

@@ -7,7 +7,7 @@
 
 /** The pages of the site. Used to mark the active navigation link. */
 export type PageName =
-  'home' | 'band' | 'termine' | 'kontakt' | 'galerie' | 'impressum'
+  'home' | 'band' | 'termine' | 'kontakt' | 'videos' | 'galerie' | 'impressum'
 
 /** One band member, as shown on the "Band" page. */
 export interface BandMember {
@@ -89,4 +89,24 @@ export interface GallerySection {
   /** Short event heading, e.g. "Badenweiler 2024" */
   title: string
   pictures: GalleryPicture[]
+}
+
+/** A video of the band on YouTube, shown in the "Musik & Video" jukebox. */
+export interface BandVideo {
+  /** YouTube video id (the `v=` parameter / embed path segment) */
+  id: string
+  /** Display title, shown above the screen while the video is cued up */
+  title: string
+  /**
+   * Short label for the selector button, e.g. "2025" for the yearly
+   * greetings. Falls back to the title when missing.
+   */
+  year?: string
+}
+
+/** One section of the video jukebox: live clips or the yearly greetings. */
+export interface VideoSection {
+  /** Short heading above the button group, e.g. "Musik & Live" */
+  title: string
+  videos: BandVideo[]
 }

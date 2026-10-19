@@ -10,6 +10,7 @@ import type {
   BandEvent,
   ContactInfo,
   GallerySection,
+  VideoSection,
 } from './types'
 
 export const bandName = 'ReBop Hot'
@@ -937,6 +938,81 @@ export const gallerySections: GallerySection[] = [
         alt: 'Die Band ReBop Hot, Fotoshooting November 2018',
         width: 1920,
         height: 1154,
+      },
+    ],
+  },
+]
+
+/**
+ * The videos of the "Musik & Video" page, embedded from the band's
+ * YouTube channel. Two sections: live/music clips and the yearly
+ * Christmas/New Year greetings. The `id` is the YouTube video id —
+ * thumbnail and embed URLs are built from it in src/lib/videos.ts.
+ */
+export const videoSections: VideoSection[] = [
+  {
+    title: 'Musik & Live',
+    videos: [
+      {
+        id: '0FSypXKGvOA',
+        title: 'ReBop Hot stellt sich vor',
+      },
+      {
+        id: 'ABlo4quyOV0',
+        title:
+          'Caledonia & He\u2019s the Man · Genuss und Gläserklang Bruchsal, 14.06.24',
+      },
+      {
+        id: 'RulFQFMRe0E',
+        title: 'Hemingway Lounge Karlsruhe, 06.04.24',
+      },
+      {
+        id: 'eXgEosKmqKI',
+        title: 'Swingin\u2019 Charlie im Tempel Karlsruhe, 11.10.19',
+      },
+      {
+        id: '0vA7XMAbflw',
+        title: 'Swing in Karlsruhe, 22.01.19',
+      },
+    ],
+  },
+  {
+    title: 'Weihnachts-/Neujahrsgrüße',
+    videos: [
+      {
+        id: 'tEYiq_ahpaE',
+        title: 'Weihnachts-/Neujahrsgrüße 2025',
+        year: '2025',
+      },
+      {
+        id: 'hl0O3YjcCHo',
+        title: 'Weihnachts-/Neujahrsgrüße 2024',
+        year: '2024',
+      },
+      {
+        id: 'iDMItZ-nyjQ',
+        title: 'Weihnachts-/Neujahrsgrüße 2023',
+        year: '2023',
+      },
+      {
+        id: 'duB8REXw9C4',
+        title: 'Weihnachts-/Neujahrsgrüße 2022',
+        year: '2022',
+      },
+      {
+        id: 'XnoEwVYj_oQ',
+        title: 'Weihnachts-/Neujahrsgrüße 2021',
+        year: '2021',
+      },
+      {
+        id: 'wDrpAiFFAlA',
+        title: 'Weihnachts-/Neujahrsgrüße 2020',
+        year: '2020',
+      },
+      {
+        id: 'dk_yZR1Ce2E',
+        title: 'Weihnachts-/Neujahrsgrüße 2019',
+        year: '2019',
       },
     ],
   },
