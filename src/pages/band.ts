@@ -12,19 +12,31 @@ initChrome('band')
 
 /** Turn one BandMember object into the HTML of a member card. */
 function memberCard(member: BandMember): string {
-  // Two initials for the placeholder "photo", e.g. "Ilse" -> "IL"
+  // Real portrait when available, otherwise the initials as placeholder
+  // "photo", e.g. "Ilse" -> "IL".
   const initials = member.name.slice(0, 2).toUpperCase()
+
+  const photoHtml = member.photo
+    ? `<img
+          class="mx-auto h-20 w-20 rounded-full object-cover"
+          src="${member.photo.src}"
+          alt="${escapeHtml(member.photo.alt)}"
+          width="${member.photo.width}"
+          height="${member.photo.height}"
+          ${member.photo.position ? `style="object-position: ${escapeHtml(member.photo.position)}"` : ''}
+        />`
+    : `<div
+          class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold to-rust font-marquee text-2xl text-stage"
+          aria-hidden="true"
+        >
+          ${initials}
+        </div>`
 
   return `
     <article
       class="w-full rounded-lg border border-gold/40 bg-stage-soft p-6 text-center sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)]"
     >
-      <div
-        class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold to-rust font-marquee text-2xl text-stage"
-        aria-hidden="true"
-      >
-        ${initials}
-      </div>
+      ${photoHtml}
       <h3 class="mt-4 font-display text-lg text-cream">
         ${escapeHtml(member.role)}: ${escapeHtml(member.name)}
       </h3>

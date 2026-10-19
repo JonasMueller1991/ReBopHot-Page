@@ -15,6 +15,25 @@ export interface BandMember {
   role: string
   /** Instrument or voice, e.g. "Gesang" or "Tenor Sax." */
   email: string
+  /** Portrait photo of the member (optional), from public/images/mitglieder/ */
+  photo?: MemberPhoto
+}
+
+/** Portrait of a band member, served from public/images/mitglieder/. */
+export interface MemberPhoto {
+  /** Path as served by Vite, e.g. "/images/mitglieder/ilse.png" */
+  src: string
+  /** Accessible description of the portrait */
+  alt: string
+  /** Intrinsic pixel size — rendered as width/height attributes to avoid layout shift */
+  width: number
+  height: number
+  /**
+   * CSS `object-position`: which part of the picture the circular crop shows.
+   * Format "X% Y%" — Y=0% top edge, Y=50% center, Y=100% bottom edge.
+   * Optional, defaults to "center" (50% 50%).
+   */
+  position?: string
 }
 
 /** A gig / event, as shown on the "Termine" page. */

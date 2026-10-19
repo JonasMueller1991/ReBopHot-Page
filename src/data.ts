@@ -35,15 +35,114 @@ export const bandDescription = [
 ].join('\n\n')
 
 export const bandMembers: BandMember[] = [
-  { name: 'Ilse', role: 'Gesang', email: 'Ilse@ReBopHot.de' },
-  { name: 'Jakob', role: 'Gesang + Gitarre', email: 'Jakob@ReBopHot.de' },
-  { name: 'Martin', role: 'Gesang + Tenor Sax.', email: 'Martin@ReBopHot.de' },
-  { name: 'Elisabeth', role: 'Klavier', email: 'Elisabeth@ReBopHot.de' },
-  { name: 'Jonas', role: 'Es Alt Sax.', email: 'Jonas@ReBopHot.de' },
-  { name: 'Anette', role: 'Bariton Sax.', email: 'Anette@ReBopHot.de' },
-  { name: 'Mathias', role: 'Posaune', email: 'Mathias@ReBopHot.de' },
-  { name: 'Hans', role: 'Bass', email: 'Hans@ReBopHot.de' },
-  { name: 'Heiko', role: 'Drums', email: 'Heiko@ReBopHot.de' },
+  {
+    name: 'Ilse',
+    role: 'Gesang',
+    email: 'Ilse@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/ilse.png',
+      alt: 'Porträt von Ilse (Gesang)',
+      width: 480,
+      height: 753,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Jakob',
+    role: 'Gesang + Gitarre',
+    email: 'Jakob@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/jakob.png',
+      alt: 'Porträt von Jakob (Gesang + Gitarre)',
+      width: 480,
+      height: 562,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Martin',
+    role: 'Gesang + Tenor Sax.',
+    email: 'Martin@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/martin.png',
+      alt: 'Porträt von Martin (Gesang + Tenor Sax.)',
+      width: 480,
+      height: 587,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Elisabeth',
+    role: 'Klavier',
+    email: 'Elisabeth@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/elisabeth.png',
+      alt: 'Porträt von Elisabeth (Klavier)',
+      width: 480,
+      height: 593,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Jonas',
+    role: 'Es Alt Sax.',
+    email: 'Jonas@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/jonas.png',
+      alt: 'Porträt von Jonas (Es Alt Sax.)',
+      width: 480,
+      height: 724,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Anette',
+    role: 'Bariton Sax.',
+    email: 'Anette@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/anette.png',
+      alt: 'Porträt von Anette (Bariton Sax.)',
+      width: 480,
+      height: 698,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Mathias',
+    role: 'Posaune',
+    email: 'Mathias@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/mathias.png',
+      alt: 'Porträt von Mathias (Posaune)',
+      width: 480,
+      height: 641,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Hans',
+    role: 'Bass',
+    email: 'Hans@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/hans.png',
+      alt: 'Porträt von Hans (Bass)',
+      width: 480,
+      height: 591,
+      position: '50% 20%',
+    },
+  },
+  {
+    name: 'Heiko',
+    role: 'Drums',
+    email: 'Heiko@ReBopHot.de',
+    photo: {
+      src: '/images/mitglieder/heiko.png',
+      alt: 'Porträt von Heiko (Drums)',
+      width: 480,
+      height: 561,
+      position: '50% 20%',
+    },
+  },
 ]
 
 /**
@@ -59,8 +158,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/klenert-2026.png',
       alt: 'Hügel-Swing im Weingut Klenert in Kraichtal',
-      width: 1600,
-      height: 1000,
+      width: 1536,
+      height: 1024,
     },
   },
   {
@@ -72,8 +171,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/husarenlager-fuokk.jpg',
       alt: 'Logo des Fördervereins zur Unterstützung der onkologischen Abteilung der Kinderklinik Karlsruhe e.V. (FUoKK)',
-      width: 1600,
-      height: 1000,
+      width: 1369,
+      height: 1169,
     },
   },
   {
@@ -85,8 +184,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/herbstmarkt-gaggenau.png',
       alt: 'Flyer zum Herbstmarkt in Gaggenau',
-      width: 1600,
-      height: 1000,
+      width: 1536,
+      height: 1024,
     },
   },
   {
@@ -99,8 +198,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/jazzclub-wiesloch.jpg',
       alt: 'Der Jazzclub 77 Weinstadt in Wiesloch',
-      width: 1600,
-      height: 1000,
+      width: 988,
+      height: 547,
     },
   },
   {
@@ -113,8 +212,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/kurpark-bad-schoenborn.png',
       alt: 'Die Kurparkbühne im Kurpark Bad Schönborn',
-      width: 1600,
-      height: 1000,
+      width: 1070,
+      height: 418,
     },
   },
   {
@@ -127,8 +226,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/augustiner-abgesagt.jpg',
       alt: 'Hinweisbild: Der Termin im Augustiner Biergarten Bad Cannstatt wurde abgesagt',
-      width: 1600,
-      height: 1000,
+      width: 720,
+      height: 360,
     },
   },
   {
@@ -141,8 +240,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/kurpark-bad-schoenborn.png',
       alt: 'Die Kurparkbühne im Kurpark Bad Schönborn',
-      width: 1600,
-      height: 1000,
+      width: 1070,
+      height: 418,
     },
   },
   {
@@ -155,7 +254,7 @@ export const events: BandEvent[] = [
       src: '/images/termine/stadtfest-rastatt.jpg',
       alt: 'Das Stadtfest Rastatt am Marktplatz (Foto: Stadt Rastatt)',
       width: 1600,
-      height: 1000,
+      height: 415,
     },
   },
   {
@@ -167,8 +266,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/weihnachtsmarkt-rastatt.jpeg',
       alt: 'Der Weihnachtsmarkt in Rastatt',
-      width: 1600,
-      height: 1000,
+      width: 837,
+      height: 919,
     },
   },
   {
@@ -181,7 +280,7 @@ export const events: BandEvent[] = [
       src: '/images/termine/adventsmarkt-gaggenau.jpeg',
       alt: 'Der Adventsmarkt in Gaggenau',
       width: 1600,
-      height: 1000,
+      height: 1065,
     },
   },
   {
@@ -194,8 +293,8 @@ export const events: BandEvent[] = [
     photo: {
       src: '/images/termine/rheinstetten-jazzclub.png',
       alt: 'Logo des Jazzclub Rheinstetten e.V.',
-      width: 1600,
-      height: 1000,
+      width: 1535,
+      height: 590,
     },
   },
   {
@@ -208,7 +307,7 @@ export const events: BandEvent[] = [
       src: '/images/termine/stadtfest-rastatt.jpg',
       alt: 'Das Stadtfest Rastatt am Marktplatz (Foto: Stadt Rastatt)',
       width: 1600,
-      height: 1000,
+      height: 415,
     },
   },
 ]
