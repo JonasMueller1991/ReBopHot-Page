@@ -85,7 +85,7 @@ export const bandMembers: BandMember[] = [
   },
   {
     name: 'Jonas',
-    role: 'Es Alt Sax.',
+    role: 'Alt Sax.',
     email: 'Jonas@ReBopHot.de',
     photo: {
       src: '/images/mitglieder/jonas.png',
