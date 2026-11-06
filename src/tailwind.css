@@ -149,6 +149,54 @@ html[data-theme='light'] .theme-icon-moon {
   display: block;
 }
 
+/* ---------- Mobile navigation: the burger key ----------
+   Below the lg breakpoint the menu collapses into a drawer that
+   drops down under the header bar (toggled by setupMobileNav in
+   src/components.ts). The three bars morph into an X while the
+   drawer is open — the same aria-driven trick as the theme icons. */
+.burger-bar {
+  position: absolute;
+  left: 50%;
+  width: 1.25rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+  transform: translateX(-50%);
+  transition:
+    transform 200ms ease,
+    opacity 150ms ease;
+}
+
+.burger-bar-top {
+  top: calc(50% - 6px);
+}
+
+.burger-bar-middle {
+  top: 50%;
+}
+
+.burger-bar-bottom {
+  top: calc(50% + 6px);
+}
+
+.burger[aria-expanded='true'] .burger-bar-top {
+  transform: translateX(-50%) translateY(6px) rotate(45deg);
+}
+
+.burger[aria-expanded='true'] .burger-bar-middle {
+  opacity: 0;
+}
+
+.burger[aria-expanded='true'] .burger-bar-bottom {
+  transform: translateX(-50%) translateY(-6px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .burger-bar {
+    transition: none;
+  }
+}
+
 /* ---------- Page backdrop: pale spotlight behind the hero ---------- */
 body {
   background-color: var(--color-stage);

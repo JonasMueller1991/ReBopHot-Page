@@ -97,13 +97,15 @@ function renderHeader(activePage: PageName): void {
   const header = qs<HTMLElement>('#site-header')
 
   // Build one <a> per link; the current page is highlighted in gold.
+  // max-lg:py-3 gives the drawer links touch targets of 44px+ on
+  // phones; the horizontal nav keeps its tighter py-1.5.
   const linkHtml = navLinks
     .map((link) => {
       const state =
         link.name === activePage
           ? 'bg-stage-soft text-gold'
           : 'text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream'
-      return `<a href="${withBase(link.href)}" class="rounded-sm px-3 py-1.5 ${state}">${link.label}</a>`
+      return `<a href="${withBase(link.href)}" class="rounded-sm px-3 py-1.5 max-lg:py-3 ${state}">${link.label}</a>`
     })
     .join('')
 
@@ -118,8 +120,16 @@ function renderHeader(activePage: PageName): void {
       >
         ReBopHot
       </a>
-      <div class="flex flex-wrap items-center gap-4">
-        <nav class="flex flex-wrap gap-1 text-sm uppercase tracking-[0.15em]">
+      <div class="flex items-center gap-3">
+        <!-- One nav, two shapes: a horizontal row from lg up, and a
+             full-width drawer dropping down under the header bar on
+             smaller screens. The burger key below lg shows and hides
+             it (setupMobileNav at the bottom of this file). -->
+        <nav
+          id="site-nav"
+          aria-label="Hauptnavigation"
+          class="max-lg:hidden max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:flex-col max-lg:gap-1 max-lg:border-b-2 max-lg:border-gold/60 max-lg:bg-stage max-lg:px-6 max-lg:py-3 max-lg:shadow-xl lg:flex-wrap text-sm uppercase tracking-[0.15em]"
+        >
           ${linkHtml}
         </nav>
         <!-- Light/dark switch: a small jukebox-style key. The icons
@@ -129,7 +139,7 @@ function renderHeader(activePage: PageName): void {
         <button
           type="button"
           id="theme-toggle"
-          class="grid h-9 w-9 place-items-center rounded-full border-2 border-gold/60 bg-stage-soft text-gold transition-colors hover:border-gold"
+          class="grid h-11 w-11 place-items-center rounded-full border-2 border-gold/60 bg-stage-soft text-gold transition-colors hover:border-gold"
           aria-label="Farbe wechseln"
         >
           <svg
@@ -157,9 +167,69 @@ function renderHeader(activePage: PageName): void {
             />
           </svg>
         </button>
+        <!-- Burger key: opens the nav drawer below lg (the bars morph
+             into an X while the menu is open — see .burger in
+             tailwind.css). Hidden on desktop, where the nav is
+             always a horizontal row. -->
+        <button
+          type="button"
+          id="nav-toggle"
+          class="burger relative grid h-11 w-11 place-items-center rounded-full border-2 border-gold/60 bg-stage-soft text-gold transition-colors hover:border-gold lg:hidden"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Menü öffnen"
+        >
+          <span class="burger-bar burger-bar-top" aria-hidden="true"></span>
+          <span class="burger-bar burger-bar-middle" aria-hidden="true"></span>
+          <span class="burger-bar burger-bar-bottom" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   `
+
+  setupMobileNav(header)
+}
+
+/** Toggle logic of the mobile nav drawer (see renderHeader above). */
+function setupMobileNav(header: HTMLElement): void {
+  const nav = qs<HTMLElement>('#site-nav', header)
+  const toggle = qs<HTMLButtonElement>('#nav-toggle', header)
+
+  const isOpen = (): boolean => toggle.getAttribute('aria-expanded') === 'true'
+
+  const setOpen = (open: boolean): void => {
+    nav.classList.toggle('max-lg:hidden', !open)
+    toggle.setAttribute('aria-expanded', String(open))
+    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen')
+  }
+
+  toggle.addEventListener('click', () => {
+    setOpen(!isOpen())
+  })
+
+  // Escape closes the drawer — the same pattern as the lightboxes.
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setOpen(false)
+    }
+  })
+
+  // Clicking anywhere outside the header closes the drawer too.
+  document.addEventListener('click', (event: MouseEvent) => {
+    if (isOpen() && !header.contains(event.target as Node)) {
+      setOpen(false)
+    }
+  })
+
+  // Turning a phone sideways (viewport ≥ lg) turns the drawer back
+  // into the horizontal nav — reset the toggle state with it.
+  window
+    .matchMedia('(min-width: 1024px)')
+    .addEventListener('change', (event) => {
+      if (event.matches) {
+        setOpen(false)
+      }
+    })
 }
 
 function renderFooter(): void {

@@ -45,13 +45,20 @@ navigation on narrow screens, and touch ergonomics.
 
 ## 🟠 Medium impact: Layout & touch UX
 
-- [ ] **6. Mobile navigation menu** — replace the `flex-wrap` nav (wraps
+- [x] **6. Mobile navigation menu** — replace the `flex-wrap` nav (wraps
       to 3–4 sticky rows on phones) with a hamburger drawer or
       horizontal-scroll nav
-  - Affects: `src/components.ts:96–163` (`renderHeader`)
-- [ ] **7. Touch target sizes** — enlarge the theme toggle from 36×36px
+  - **Done:** one `<nav>` with two shapes (`src/components.ts`): a
+    horizontal row from `lg` up, a full-width drawer dropping below the
+    sticky header bar below that. Burger key (`lg:hidden`) toggles it,
+    bars morph into an X (`.burger` in `src/tailwind.css`, respects
+    `prefers-reduced-motion`). Escape and outside clicks close the
+    drawer; rotating to ≥lg resets it (matchMedia). Desktop unchanged.
+- [x] **7. Touch target sizes** — enlarge the theme toggle from 36×36px
       (`h-9 w-9`) and nav links to ≥ 44×44px
-  - Affects: `src/components.ts:129–132`, `src/components.ts:106`
+  - **Done:** theme toggle and burger are `h-11 w-11` (44px); drawer
+    links get `max-lg:py-3` (~46px tall). Desktop nav keeps `py-1.5`
+    (mouse pointers don't need 44px).
 
 ## 🟡 Low impact: Polish
 
