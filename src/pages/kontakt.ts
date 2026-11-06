@@ -6,6 +6,7 @@
 import { initChrome, qs, qsa } from '@/components'
 import { contact } from '@/data'
 import { escapeHtml } from '@/lib/escape'
+import { buildMailtoUrl } from '@/lib/mailto'
 import {
   hasError,
   validateDate,
@@ -45,7 +46,7 @@ function showError(fieldName: string, message: string): void {
 }
 
 function clearErrors(): void {
-  qsa<HTMLElement>('.error').forEach((element) => {
+  qsa<HTMLElement>('[data-error-for]').forEach((element) => {
     element.textContent = ''
   })
 }
@@ -82,14 +83,30 @@ function setupForm(): void {
     }
 
     const successMessage = qs<HTMLElement>('#form-success')
+    const fallbackMessage = qs<HTMLElement>('#form-fallback')
 
     if (allValid) {
-      // TODO: wire this up to a backend endpoint once one is available;
-      // until then the message is not sent anywhere.
+      // There is no backend (the site is static), so the visitor's own
+      // mail program does the sending: it opens with subject and body
+      // pre-filled, and the visitor just clicks "send" there.
+      window.location.href = buildMailtoUrl(contact.email, {
+        name,
+        email,
+        date,
+        message,
+      })
+
+      // For visitors without a mail program (e.g. webmail-only), point
+      // at the plain address so nothing is lost.
+      fallbackMessage.innerHTML = `Kein E-Mail-Programm geöffnet? Schreiben Sie uns direkt an
+        <a class="text-gold underline transition-colors hover:text-cream" href="mailto:${escapeHtml(contact.email)}">${escapeHtml(contact.email)}</a>.`
+
       successMessage.hidden = false
+      fallbackMessage.hidden = false
       form.reset()
     } else {
       successMessage.hidden = true
+      fallbackMessage.hidden = true
     }
   })
 }
