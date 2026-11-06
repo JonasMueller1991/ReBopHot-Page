@@ -8,6 +8,7 @@ import { events } from '@/data'
 import { daysUntilLabel } from '@/lib/dates'
 import { findNextEvent } from '@/lib/events'
 import { escapeHtml } from '@/lib/escape'
+import { withBase } from '@/lib/url'
 
 initChrome('home')
 
@@ -47,7 +48,7 @@ function renderNextEvent(): void {
         ${weekday}, ${date} · ${escapeHtml(nextEvent.location)}
         ${nextEvent.time ? ' · ' + escapeHtml(nextEvent.time) : ''}
       </p>
-      <a href="/termine/" class="btn-retro mt-8">Alle Termine</a>
+      <a href="${withBase('/termine/')}" class="btn-retro mt-8">Alle Termine</a>
     </div>
   `
 }

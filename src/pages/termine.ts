@@ -11,6 +11,7 @@ import { events } from '@/data'
 import { formatEventDate } from '@/lib/dates'
 import { splitByDate } from '@/lib/events'
 import { escapeHtml } from '@/lib/escape'
+import { withBase } from '@/lib/url'
 import type { BandEvent } from '@/types'
 
 initChrome('termine')
@@ -94,7 +95,7 @@ function openLightbox(event: BandEvent): void {
   const image = qs<HTMLImageElement>('.lightbox-picture', lightbox)
   const caption = qs<HTMLElement>('.lightbox-caption', lightbox)
 
-  image.src = event.photo.src
+  image.src = withBase(event.photo.src)
   image.alt = event.photo.alt
   image.width = event.photo.width
   image.height = event.photo.height

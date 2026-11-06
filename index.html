@@ -84,8 +84,10 @@
           </p>
 
           <div class="mt-8 flex flex-wrap justify-center gap-5">
-            <a href="/termine/" class="btn-retro">Zu den Terminen</a>
-            <a href="/band/" class="btn-retro-outline">Zur Band</a>
+            <!-- hrefs are relative so they also work under the GitHub
+                 Pages sub-path (Vite does not rewrite <a href>). -->
+            <a href="termine/" class="btn-retro">Zu den Terminen</a>
+            <a href="band/" class="btn-retro-outline">Zur Band</a>
           </div>
         </div>
       </section>

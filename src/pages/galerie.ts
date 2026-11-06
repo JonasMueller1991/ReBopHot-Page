@@ -7,6 +7,7 @@
 import { initChrome, qs } from '@/components'
 import { gallerySections } from '@/data'
 import { escapeHtml } from '@/lib/escape'
+import { withBase } from '@/lib/url'
 import type { GalleryPicture } from '@/types'
 
 initChrome('galerie')
@@ -34,7 +35,7 @@ function renderGallery(): void {
                     data-picture="${pictureIndex}"
                   >
                     <img
-                      src="${picture.src}"
+                      src="${withBase(picture.src)}"
                       alt="${picture.alt}"
                       width="${picture.width}"
                       height="${picture.height}"

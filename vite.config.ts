@@ -10,6 +10,10 @@ import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  // GitHub Pages serves the site from a sub-path
+  // (https://jonasmueller1991.github.io/ReBopHot-Page/), so all asset
+  // URLs are built relative to it. In dev mode this has no effect.
+  base: '/ReBopHot-Page/',
   plugins: [tailwindcss()],
   resolve: {
     alias: {

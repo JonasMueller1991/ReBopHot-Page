@@ -27,6 +27,7 @@ import '@fontsource/playfair-display/600-italic.css'
 import type { PageName } from '@/types'
 import { contact } from '@/data'
 import { initTheme } from '@/theme'
+import { withBase } from '@/lib/url'
 
 // ---------------------------------------------------------------------------
 // Typed DOM helpers
@@ -67,7 +68,9 @@ interface NavLink {
 }
 
 /** The main menu — the same on every page.
- *  Href are root-absolute so they work from every directory depth. */
+ *  Href are root-absolute; `withBase` prefixes them at render time so
+ *  they work from every directory depth *and* under the GitHub Pages
+ *  sub-path (see src/lib/url.ts). */
 const navLinks: NavLink[] = [
   { name: 'home', href: '/', label: 'Home' },
   { name: 'band', href: '/band/', label: 'Band' },
@@ -100,7 +103,7 @@ function renderHeader(activePage: PageName): void {
         link.name === activePage
           ? 'bg-stage-soft text-gold'
           : 'text-cream-dim transition-colors hover:bg-stage-soft hover:text-cream'
-      return `<a href="${link.href}" class="rounded-sm px-3 py-1.5 ${state}">${link.label}</a>`
+      return `<a href="${withBase(link.href)}" class="rounded-sm px-3 py-1.5 ${state}">${link.label}</a>`
     })
     .join('')
 
@@ -110,7 +113,7 @@ function renderHeader(activePage: PageName): void {
   header.innerHTML = `
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
       <a
-        href="/"
+        href="${withBase('/')}"
         class="logo-letterpress font-script text-3xl leading-none"
       >
         ReBopHot
@@ -181,7 +184,7 @@ function renderFooter(): void {
       <p class="mt-3 flex flex-wrap justify-center gap-6 uppercase tracking-[0.15em]">
         <a class="text-gold transition-colors hover:text-cream" href="${contact.facebookUrl}" target="_blank" rel="noopener">Facebook</a>
         <a class="text-gold transition-colors hover:text-cream" href="mailto:${contact.email}">${contact.email}</a>
-        <a class="text-gold transition-colors hover:text-cream" href="/impressum/">Impressum</a>
+        <a class="text-gold transition-colors hover:text-cream" href="${withBase('/impressum/')}">Impressum</a>
       </p>
     </div>
   `

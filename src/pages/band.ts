@@ -6,6 +6,7 @@
 import { initChrome, qs } from '@/components'
 import { bandDescription, bandIntro, bandMembers } from '@/data'
 import { escapeHtml } from '@/lib/escape'
+import { withBase } from '@/lib/url'
 import type { BandMember } from '@/types'
 
 initChrome('band')
@@ -19,7 +20,7 @@ function memberCard(member: BandMember): string {
   const photoHtml = member.photo
     ? `<img
           class="mx-auto h-20 w-20 rounded-full object-cover"
-          src="${member.photo.src}"
+          src="${withBase(member.photo.src)}"
           alt="${escapeHtml(member.photo.alt)}"
           width="${member.photo.width}"
           height="${member.photo.height}"
