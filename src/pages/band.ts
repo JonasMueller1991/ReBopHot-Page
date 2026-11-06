@@ -6,7 +6,7 @@
 import { initChrome, qs } from '@/components'
 import { bandDescription, bandIntro, bandMembers } from '@/data'
 import { escapeHtml } from '@/lib/escape'
-import { withBase } from '@/lib/url'
+import { responsivePictureHtml } from '@/lib/images'
 import type { BandMember } from '@/types'
 
 initChrome('band')
@@ -18,14 +18,17 @@ function memberCard(member: BandMember): string {
   const initials = member.name.slice(0, 2).toUpperCase()
 
   const photoHtml = member.photo
-    ? `<img
-          class="mx-auto h-20 w-20 rounded-full object-cover"
-          src="${withBase(member.photo.src)}"
-          alt="${escapeHtml(member.photo.alt)}"
-          width="${member.photo.width}"
-          height="${member.photo.height}"
-          ${member.photo.position ? `style="object-position: ${escapeHtml(member.photo.position)}"` : ''}
-        />`
+    ? responsivePictureHtml({
+        src: member.photo.src,
+        alt: member.photo.alt,
+        width: member.photo.width,
+        height: member.photo.height,
+        // Displayed at 80×80px (h-20 w-20); the 480px variant also
+        // covers 2× retina screens at a fraction of the PNG size.
+        sizes: '80px',
+        className: 'mx-auto h-20 w-20 rounded-full object-cover',
+        objectPosition: member.photo.position,
+      })
     : `<div
           class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold-pop to-rust font-marquee text-2xl text-ink"
           aria-hidden="true"

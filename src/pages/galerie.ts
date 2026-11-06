@@ -7,6 +7,7 @@
 import { initChrome, qs } from '@/components'
 import { gallerySections } from '@/data'
 import { escapeHtml } from '@/lib/escape'
+import { responsivePictureHtml, webpSrcset } from '@/lib/images'
 import { withBase } from '@/lib/url'
 import type { GalleryPicture } from '@/types'
 
@@ -34,14 +35,21 @@ function renderGallery(): void {
                     data-section="${sectionIndex}"
                     data-picture="${pictureIndex}"
                   >
-                    <img
-                      src="${withBase(picture.src)}"
-                      alt="${picture.alt}"
-                      width="${picture.width}"
-                      height="${picture.height}"
-                      loading="lazy"
-                      class="aspect-[4/3] w-full rounded-md object-cover"
-                    />
+                    ${responsivePictureHtml({
+                      src: picture.src,
+                      alt: picture.alt,
+                      width: picture.width,
+                      height: picture.height,
+                      loading: 'lazy',
+                      // One column on phones, two from sm, three from lg
+                      // (container max-w-6xl with px-6 padding, gap-6).
+                      sizes:
+                        '(min-width: 1200px) 352px, ' +
+                        '(min-width: 1024px) calc((100vw - 96px) / 3), ' +
+                        '(min-width: 640px) calc((100vw - 72px) / 2), ' +
+                        'calc(100vw - 48px)',
+                      className: 'aspect-[4/3] w-full rounded-md object-cover',
+                    })}
                     <p class="mt-3 text-center text-sm uppercase tracking-[0.15em] text-cream-dim transition-colors group-hover:text-cream">
                       ${escapeHtml(picture.title)}
                     </p>
@@ -58,11 +66,15 @@ function renderGallery(): void {
 
 function openLightbox(picture: GalleryPicture): void {
   const lightbox = qs<HTMLElement>('#lightbox')
+  const source = qs<HTMLSourceElement>('.lightbox-source', lightbox)
   const image = qs<HTMLImageElement>('.lightbox-picture', lightbox)
   const caption = qs<HTMLElement>('.lightbox-caption', lightbox)
 
-  image.src = picture.src
+  source.srcset = webpSrcset(picture.src, picture.width)
+  image.src = withBase(picture.src)
   image.alt = picture.alt
+  image.width = picture.width
+  image.height = picture.height
   caption.textContent = picture.title
   lightbox.hidden = false
 }

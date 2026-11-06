@@ -17,18 +17,25 @@ navigation on narrow screens, and touch ergonomics.
 
 ## 🔴 High impact: Performance
 
-- [ ] **1. Responsive image pipeline** — generate WebP/AVIF variants
+- [x] **1. Responsive image pipeline** — generate WebP/AVIF variants
       (480/768/1024/1536px) for `public/images`, either via a `sharp`
       build script or a Vite plugin
-  - Affects: `public/images/` (86 MB total, 34 files > 500 KB)
-- [ ] **2. Serve responsive variants** — add `srcset`/`sizes` to all
+  - **Done:** `scripts/generate-image-variants.mjs` (sharp), wired into
+    `npm run build`; variants generated in CI, gitignored locally
+- [x] **2. Serve responsive variants** — add `srcset`/`sizes` to all
       `<img>` tags
-  - Affects: `index.html:71` (hero), `src/pages/band.ts:21` (member
-    photos), `src/pages/galerie.ts:37` (gallery grid),
-    `src/pages/termine.ts` (event lightbox)
-- [ ] **3. Optimize hero image** — convert `2026_banner.png` (1.5 MB PNG)
+  - **Done:** `<picture>` markup via `src/lib/images.ts`
+    (`responsivePictureHtml`/`webpSrcset`, unit-tested); hero in
+    `index.html`, member photos in `band.ts`, gallery grid + lightbox in
+    `galerie.ts`/`galerie/index.html`, event lightbox in
+    `termine.ts`/`termine/index.html`. Also fixed a latent bug: the
+    galerie lightbox set `image.src` without `withBase`, which was
+    broken under the GitHub Pages sub-path.
+- [x] **3. Optimize hero image** — convert `2026_banner.png` (1.5 MB PNG)
       to JPEG/WebP; re-encode as part of task 1
-- [ ] **4. Prioritize hero loading** — add `fetchpriority="high"` (or
+  - **Done:** 480w variant is 28 KB, 1536w is 110 KB (vs. 1.5 MB PNG);
+    all variants total 27 MB vs. 86 MB originals
+- [x] **4. Prioritize hero loading** — add `fetchpriority="high"` (or
       `<link rel="preload">`) to the hero image in `index.html`
 - [ ] **5. Tame the starburst animation** — reduce size or disable below
       the `sm` breakpoint; respect `prefers-reduced-motion` for starburst
@@ -56,7 +63,7 @@ navigation on narrow screens, and touch ergonomics.
       `<meta name="theme-color">` (dark stage color), apple-touch-icon;
       optionally make lightbox images pinch-zoomable
 - [ ] **10. Verification** — run Lighthouse (mobile preset) in Chrome
-       DevTools device mode before and after to confirm improvements
+      DevTools device mode before and after to confirm improvements
 
 ---
 

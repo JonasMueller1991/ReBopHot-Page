@@ -67,11 +67,21 @@
         hidden
       >
         <div class="text-center">
-          <img
-            class="lightbox-picture mx-auto w-[min(720px,85vw)] rounded-lg border-2 border-gold bg-black/40 object-contain"
-            src=""
-            alt=""
-          />
+          <!-- <picture> so the lightbox can also serve the WebP variants
+               (srcset is set by termine.ts when an event is opened). -->
+          <picture>
+            <source
+              class="lightbox-source"
+              type="image/webp"
+              srcset=""
+              sizes="min(720px, 85vw)"
+            />
+            <img
+              class="lightbox-picture mx-auto w-[min(720px,85vw)] rounded-lg border-2 border-gold bg-black/40 object-contain"
+              src=""
+              alt=""
+            />
+          </picture>
           <p
             class="lightbox-caption mt-4 tracking-[0.2em] text-cream-dim uppercase"
           ></p>

@@ -68,13 +68,30 @@
             Karlsruhe · Kraichgau · Pfalz
           </p>
 
-          <img
-            src="/images/2026_banner.png"
-            alt="ReBop Hot &ndash; die Band, Bandbild 2026 mit ReBop-Hot-Schriftzug"
-            width="1536"
-            height="1024"
-            class="mx-auto w-full max-w-2xl rounded-lg border-2 border-gold/60 shadow-[8px_8px_0_rgba(143,48,41,0.55)]"
-          />
+          <!-- WebP variants (generated at build time, see
+               scripts/generate-image-variants.mjs) keep the hero under
+               ~200 KB on phones instead of 1.5 MB; the PNG stays as
+               fallback. fetchpriority boosts the LCP image. -->
+          <picture>
+            <source
+              type="image/webp"
+              srcset="
+                /images/2026_banner-480.webp   480w,
+                /images/2026_banner-768.webp   768w,
+                /images/2026_banner-1024.webp 1024w,
+                /images/2026_banner-1536.webp 1536w
+              "
+              sizes="(min-width: 720px) 672px, calc(100vw - 3rem)"
+            />
+            <img
+              src="/images/2026_banner.png"
+              alt="ReBop Hot &ndash; die Band, Bandbild 2026 mit ReBop-Hot-Schriftzug"
+              width="1536"
+              height="1024"
+              fetchpriority="high"
+              class="mx-auto w-full max-w-2xl rounded-lg border-2 border-gold/60 shadow-[8px_8px_0_rgba(143,48,41,0.55)]"
+            />
+          </picture>
 
           <p class="mt-8 font-display text-2xl text-gold italic">
             &ndash; Ready to dance? &ndash;

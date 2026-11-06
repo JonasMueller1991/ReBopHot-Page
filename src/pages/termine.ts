@@ -11,6 +11,7 @@ import { events } from '@/data'
 import { formatEventDate } from '@/lib/dates'
 import { splitByDate } from '@/lib/events'
 import { escapeHtml } from '@/lib/escape'
+import { webpSrcset } from '@/lib/images'
 import { withBase } from '@/lib/url'
 import type { BandEvent } from '@/types'
 
@@ -92,9 +93,11 @@ function openLightbox(event: BandEvent): void {
   if (event.photo === undefined) return
 
   const lightbox = qs<HTMLElement>('#event-lightbox')
+  const source = qs<HTMLSourceElement>('.lightbox-source', lightbox)
   const image = qs<HTMLImageElement>('.lightbox-picture', lightbox)
   const caption = qs<HTMLElement>('.lightbox-caption', lightbox)
 
+  source.srcset = webpSrcset(event.photo.src, event.photo.width)
   image.src = withBase(event.photo.src)
   image.alt = event.photo.alt
   image.width = event.photo.width

@@ -2,3 +2,7 @@ node_modules/
 dist/
 .idea/
 .DS_Store
+
+# WebP variants are generated at build time (npm run images),
+# never committed — the originals in public/images/ are the sources.
+public/images/**/*-*.webp
