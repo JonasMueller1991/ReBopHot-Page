@@ -78,16 +78,12 @@
    <html data-theme> — the utility classes and markup stay untouched.
 
    Component values that are not tokens (spotlight glow, starburst
-   rays, letterpress shadows, offset shadows) live on plain :root vars
-   and are re-pinned alongside. */
+   rays, offset shadows) live on plain :root vars and are
+   re-pinned alongside. */
 
 :root {
   --spotlight: rgba(237, 234, 226, 0.07);
   --starburst-ray: rgba(245, 243, 236, 0.11);
-  --logo-ink: #f5ebd4;
-  --logo-edge: rgba(0, 0, 0, 0.55);
-  --logo-glow: rgba(245, 235, 212, 0.22);
-  --logo-glow-strong: rgba(245, 235, 212, 0.45);
   --btn-outline-shadow: rgba(195, 160, 92, 0.22);
   --jukebox-rim: rgba(195, 160, 92, 0.5);
 }
@@ -108,10 +104,6 @@ html[data-theme='light'] {
 
   --spotlight: rgba(195, 160, 92, 0.14);
   --starburst-ray: rgba(43, 35, 23, 0.08);
-  --logo-ink: #2b2317;
-  --logo-edge: rgba(255, 255, 255, 0.5);
-  --logo-glow: rgba(160, 118, 40, 0.3);
-  --logo-glow-strong: rgba(160, 118, 40, 0.55);
   --btn-outline-shadow: rgba(61, 42, 12, 0.2);
   --jukebox-rim: rgba(125, 90, 26, 0.45);
 }
@@ -127,10 +119,6 @@ html[data-theme='light'] .keep-dark {
   --color-cream-warm: #f5ebd4;
   --color-cream-dim: #b0aca1;
   --color-gold: #c3a05c;
-  --logo-ink: #f5ebd4;
-  --logo-edge: rgba(0, 0, 0, 0.55);
-  --logo-glow: rgba(245, 235, 212, 0.22);
-  --logo-glow-strong: rgba(245, 235, 212, 0.45);
   --btn-outline-shadow: rgba(195, 160, 92, 0.22);
 }
 
@@ -146,6 +134,26 @@ html[data-theme='light'] .theme-icon-sun {
 }
 
 html[data-theme='light'] .theme-icon-moon {
+  display: block;
+}
+
+/* ---------- Header logo: white on the dark stage, black on paper --
+   src/components.ts renders both variants inside the home link; the
+   data-theme pin decides which one is visible (same trick as the
+   theme icons above, no JS when the theme flips). */
+.logo-white {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+html[data-theme='light'] .logo-white {
+  display: none;
+}
+
+html[data-theme='light'] .logo-dark {
   display: block;
 }
 
@@ -255,28 +263,6 @@ textarea:focus-visible {
 
 .ticket::after {
   right: -0.8rem;
-}
-
-/* Lettering treatment modeled on the 2026 banner wordmark:
-   warm cream (#f5ebd4, measured from the image) with a dark
-   letterpress edge and a faint glow — like light catching the
-   painted logo on the photo. Used for the header logo and the
-   band name in the footer; the glow intensifies on hover.
-   The ink/edge/glow colors are theme vars: dark espresso with a
-   light emboss on the cream paper of light mode (the footer
-   re-pins the dark values — see .keep-dark above). */
-.logo-letterpress {
-  color: var(--logo-ink);
-  text-shadow:
-    0 2px 0 var(--logo-edge),
-    0 0 28px var(--logo-glow);
-  transition: text-shadow 150ms ease;
-}
-
-.logo-letterpress:hover {
-  text-shadow:
-    0 2px 0 var(--logo-edge),
-    0 0 44px var(--logo-glow-strong);
 }
 
 /* Retro buttons with a hard offset shadow ("pressed print" feel). */

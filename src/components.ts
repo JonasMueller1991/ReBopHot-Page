@@ -27,6 +27,7 @@ import '@fontsource/playfair-display/600-italic.css'
 import type { PageName } from '@/types'
 import { contact } from '@/data'
 import { initTheme } from '@/theme'
+import { webpSrcset } from '@/lib/images'
 import { withBase } from '@/lib/url'
 
 // ---------------------------------------------------------------------------
@@ -96,6 +97,11 @@ function renderSkipLink(): void {
 function renderHeader(activePage: PageName): void {
   const header = qs<HTMLElement>('#site-header')
 
+  // Rendered logo width per breakpoint (the ~2.03:1 wordmark at
+  // h-10 / md:h-12 / lg:h-14) — tells the browser which WebP variant
+  // is the smallest sufficient one for the srcsets below.
+  const logoSizes = '(min-width: 1024px) 114px, (min-width: 768px) 97px, 81px'
+
   // Build one <a> per link; the current page is highlighted in gold.
   // max-lg:py-3 gives the drawer links touch targets of 44px+ on
   // phones; the horizontal nav keeps its tighter py-1.5.
@@ -114,11 +120,32 @@ function renderHeader(activePage: PageName): void {
 
   header.innerHTML = `
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-2 px-6 py-3">
-      <a
-        href="${withBase('/')}"
-        class="logo-letterpress font-script text-3xl leading-none"
-      >
-        ReBopHot
+      <!-- The band wordmark as the real logo (assets prepared by
+           scripts/make-transparent-logos.mjs): the white variant on
+           the dark stage, the black one on the cream paper. Which
+           variant is visible is driven by html[data-theme] in
+           tailwind.css — the same display trick as the theme icons,
+           so no JS is needed when the theme flips. width/height
+           (the intrinsic size) keep the layout stable. -->
+      <a href="${withBase('/')}" aria-label="ReBop Hot – zur Startseite">
+        <img
+          src="${withBase('/images/logo-white.png')}"
+          srcset="${webpSrcset('/images/logo-white.png', 1274)}"
+          sizes="${logoSizes}"
+          alt=""
+          width="1274"
+          height="628"
+          class="logo-white h-10 w-auto md:h-12 lg:h-14"
+        />
+        <img
+          src="${withBase('/images/logo-dark.png')}"
+          srcset="${webpSrcset('/images/logo-dark.png', 1273)}"
+          sizes="${logoSizes}"
+          alt=""
+          width="1273"
+          height="627"
+          class="logo-dark h-10 w-auto md:h-12 lg:h-14"
+        />
       </a>
       <div class="flex items-center gap-3">
         <!-- One nav, two shapes: a horizontal row from lg up, and a
@@ -239,11 +266,35 @@ function renderFooter(): void {
   // deep paper under a bronze rule in light mode (--color-footer).
   footer.className = 'border-t-2 border-gold/60 bg-footer'
 
+  // Same two-variant logo as the header (white on the dark stage,
+  // black on the cream paper); visibility is flipped by the
+  // .logo-white / .logo-dark rules in tailwind.css. Rendered a bit
+  // larger than in the header — the footer is the closing brand
+  // moment.
+  const footerLogoSizes = '(min-width: 768px) 114px, 97px'
+
   footer.innerHTML = `
     <div class="mx-auto max-w-6xl px-6 py-8 text-center text-sm">
-      <p class="logo-letterpress font-script text-2xl leading-snug">
-        ReBopHot
-      </p>
+      <a href="${withBase('/')}" aria-label="ReBop Hot – zur Startseite">
+        <img
+          src="${withBase('/images/logo-white.png')}"
+          srcset="${webpSrcset('/images/logo-white.png', 1274)}"
+          sizes="${footerLogoSizes}"
+          alt=""
+          width="1274"
+          height="628"
+          class="logo-white mx-auto h-12 w-auto md:h-14"
+        />
+        <img
+          src="${withBase('/images/logo-dark.png')}"
+          srcset="${webpSrcset('/images/logo-dark.png', 1273)}"
+          sizes="${footerLogoSizes}"
+          alt=""
+          width="1273"
+          height="627"
+          class="logo-dark mx-auto h-12 w-auto md:h-14"
+        />
+      </a>
       <p class="mt-1 text-xs uppercase tracking-[0.3em] text-cream-dim">
         Vintage Dance Music
       </p>
