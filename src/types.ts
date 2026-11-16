@@ -17,6 +17,8 @@ export interface BandMember {
   email: string
   /** Portrait photo of the member (optional), from public/images/mitglieder/ */
   photo?: MemberPhoto
+  /** Short description of the member, shown in the detail modal */
+  description?: string
 }
 
 /** Portrait of a band member, served from public/images/mitglieder/. */

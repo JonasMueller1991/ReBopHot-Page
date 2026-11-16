@@ -70,6 +70,57 @@
         id="member-grid"
         class="mt-12 flex flex-wrap justify-center gap-6"
       ></section>
+
+      <!-- Detail modal for one band member, hidden until a member card
+           is clicked. Same overlay pattern as the Termine/Galerie
+           lightboxes, but as a card with text instead of a bare picture. -->
+      <div
+        id="member-modal"
+        class="keep-dark fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/90 p-6"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="member-modal-title"
+        hidden
+      >
+        <div
+          class="w-[min(28rem,90vw)] rounded-lg border border-gold/60 bg-stage-soft p-6 text-center"
+        >
+          <!-- <picture> so the modal can also serve the WebP variants
+               (srcset is set by band.ts when a member is opened). The
+               portrait keeps its natural aspect ratio here — the full
+               photo, not the circular grid crop. -->
+          <picture>
+            <source
+              class="member-modal-source"
+              type="image/webp"
+              srcset=""
+              sizes="min(320px, 80vw)"
+            />
+            <img
+              class="member-modal-picture mx-auto w-[min(320px,80vw)] rounded-lg border-2 border-gold bg-black/40"
+              src=""
+              alt=""
+            />
+          </picture>
+          <h2
+            id="member-modal-title"
+            class="mt-4 font-display text-2xl text-cream"
+          >
+            <span class="member-modal-role text-gold"></span>:
+            <span class="member-modal-name"></span>
+          </h2>
+          <p
+            class="member-modal-description mt-4 font-display leading-relaxed text-cream-dim"
+          ></p>
+          <p class="member-modal-email mt-4 text-sm"></p>
+          <button
+            type="button"
+            class="btn-retro-outline member-modal-close mt-6"
+          >
+            Schließen
+          </button>
+        </div>
+      </div>
     </main>
 
     <footer id="site-footer"></footer>

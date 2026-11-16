@@ -35,11 +35,17 @@ export const bandDescription = [
     'Louis Jordan oder Wynona Carr.',
 ].join('\n\n')
 
+/**
+ * The members' short descriptions are shown in the detail modal when a
+ * member card is clicked. They are placeholders for now — real texts
+ * can be dropped in here one by one without any code change.
+ */
 export const bandMembers: BandMember[] = [
   {
     name: 'Ilse',
     role: 'Gesang',
     email: 'Ilse@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Ilse folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/ilse.png',
       alt: 'Porträt von Ilse (Gesang)',
@@ -52,6 +58,7 @@ export const bandMembers: BandMember[] = [
     name: 'Jakob',
     role: 'Gesang + Gitarre',
     email: 'Jakob@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Jakob folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/jakob.png',
       alt: 'Porträt von Jakob (Gesang + Gitarre)',
@@ -64,6 +71,7 @@ export const bandMembers: BandMember[] = [
     name: 'Martin',
     role: 'Gesang + Tenor Sax.',
     email: 'Martin@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Martin folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/martin.png',
       alt: 'Porträt von Martin (Gesang + Tenor Sax.)',
@@ -76,6 +84,7 @@ export const bandMembers: BandMember[] = [
     name: 'Elisabeth',
     role: 'Klavier',
     email: 'Elisabeth@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Elisabeth folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/elisabeth.png',
       alt: 'Porträt von Elisabeth (Klavier)',
@@ -88,6 +97,7 @@ export const bandMembers: BandMember[] = [
     name: 'Jonas',
     role: 'Alt Sax.',
     email: 'Jonas@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Jonas folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/jonas.png',
       alt: 'Porträt von Jonas (Es Alt Sax.)',
@@ -100,6 +110,7 @@ export const bandMembers: BandMember[] = [
     name: 'Anette',
     role: 'Bariton Sax.',
     email: 'Anette@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Anette folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/anette.png',
       alt: 'Porträt von Anette (Bariton Sax.)',
@@ -112,6 +123,7 @@ export const bandMembers: BandMember[] = [
     name: 'Mathias',
     role: 'Posaune',
     email: 'Mathias@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Mathias folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/mathias.png',
       alt: 'Porträt von Mathias (Posaune)',
@@ -124,6 +136,7 @@ export const bandMembers: BandMember[] = [
     name: 'Hans',
     role: 'Bass',
     email: 'Hans@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Hans folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/hans.png',
       alt: 'Porträt von Hans (Bass)',
@@ -136,6 +149,7 @@ export const bandMembers: BandMember[] = [
     name: 'Heiko',
     role: 'Drums',
     email: 'Heiko@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Heiko folgt in Kürze.',
     photo: {
       src: '/images/mitglieder/heiko.png',
       alt: 'Porträt von Heiko (Drums)',
