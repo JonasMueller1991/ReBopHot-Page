@@ -50,6 +50,8 @@ export interface BandEvent {
   note?: string
   /** true if the event was called off (German: "abgesagt") */
   cancelled?: boolean
+  /** true if the date is not confirmed yet (German: "noch unbestätigt") */
+  tentative?: boolean
   /** Picture of the event, opened in the lightbox when the card is clicked */
   photo?: EventPhoto
 }

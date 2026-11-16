@@ -37,6 +37,13 @@ function eventCard(event: BandEvent, index: number, past: boolean): string {
       ? '<p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-error">&mdash; Termin wurde abgesagt &mdash;</p>'
       : ''
 
+  // Unconfirmed dates get the same treatment as cancelled ones, but
+  // softer: a gold hint line with the question mark instead of red.
+  const tentativeHtml =
+    event.tentative === true
+      ? '<p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gold">&mdash; Termin noch unbest&auml;tigt (?) &mdash;</p>'
+      : ''
+
   // Cards with a picture are clickable and open the lightbox.
   const clickable = event.photo !== undefined
   const photoHintHtml = clickable
@@ -53,6 +60,7 @@ function eventCard(event: BandEvent, index: number, past: boolean): string {
       ${clickable ? `data-event-index="${index}" tabindex="0" role="button"` : ''}
     >
       ${cancelledHtml}
+      ${tentativeHtml}
       <h3 class="font-display text-xl text-cream">${escapeHtml(event.title)}</h3>
       <p class="mt-1 text-sm uppercase tracking-[0.15em] text-gold">${formatEventDate(event.date)}</p>
       <p class="mt-1 text-cream-dim">${escapeHtml(event.location)}</p>

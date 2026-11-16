@@ -36,11 +36,19 @@ function renderNextEvent(): void {
     year: 'numeric',
   })
 
+  // Same hint as on the Termine page: unconfirmed dates are marked
+  // with the question mark, in gold instead of the cancelled red.
+  const tentativeHtml =
+    nextEvent.tentative === true
+      ? '<p class="mt-2 text-sm font-semibold uppercase tracking-[0.2em] text-gold">&mdash; Termin noch unbest&auml;tigt (?) &mdash;</p>'
+      : ''
+
   container.innerHTML = `
     <div class="ticket mx-auto border-2 border-dashed border-gold/70 bg-stage-soft px-8 py-10 text-center sm:px-14">
       <p class="text-xs uppercase tracking-[0.4em] text-cream-dim">
         Nächster Termin · ${escapeHtml(daysUntilLabel(nextEvent.date, today))}
       </p>
+      ${tentativeHtml}
       <h2 class="mt-3 font-marquee text-2xl text-gold sm:text-3xl">
         ${escapeHtml(nextEvent.title)}
       </h2>

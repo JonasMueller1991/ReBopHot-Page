@@ -173,6 +173,36 @@ export const bandMembers: BandMember[] = [
  * split them into upcoming / past at runtime (see src/pages/termine.ts).
  */
 export const events: BandEvent[] = [
+  // 2027 — the dates are not confirmed by the venues yet, hence
+  // tentative: true (renders as "Termin noch unbestätigt (?)").
+  // Remove the flag once each date is confirmed.
+  {
+    date: '2027-08-20',
+    title: 'Hügelswing beim Weingut Klenert',
+    location: 'Kraichtal, Karlsruher Str. 33',
+    time: 'ab 18.00h',
+    tentative: true,
+  },
+  {
+    date: '2027-08-08',
+    title: 'Klosterfest',
+    location: 'Bad Herrenalb',
+    time: 'ab 17.00h',
+    tentative: true,
+  },
+  {
+    date: '2027-06-26',
+    title: 'Das Naturfreundehaus',
+    location: 'Unterer Legel 1b · 76287 Rheinstetten',
+    tentative: true,
+  },
+  {
+    date: '2027-05-01',
+    title: 'Kulturfest Nordweststadt',
+    location: 'Karlsruhe',
+    time: 'ab 17.00h',
+    tentative: true,
+  },
   {
     date: '2026-10-28',
     title: 'Weingut Klenert',
