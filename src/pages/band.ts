@@ -14,12 +14,14 @@ import type { BandMember } from '@/types'
 
 initChrome('band')
 
+/** The initials of a member, e.g. "Ilse" -> "IL" — used by the
+ *  placeholder "photo" of members without a portrait. */
+function initialsOf(member: BandMember): string {
+  return member.name.slice(0, 2).toUpperCase()
+}
+
 /** Turn one BandMember object into the HTML of a member card. */
 function memberCard(member: BandMember, index: number): string {
-  // Real portrait when available, otherwise the initials as placeholder
-  // "photo", e.g. "Ilse" -> "IL".
-  const initials = member.name.slice(0, 2).toUpperCase()
-
   const photoHtml = member.photo
     ? responsivePictureHtml({
         src: member.photo.src,
@@ -36,7 +38,7 @@ function memberCard(member: BandMember, index: number): string {
           class="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold-pop to-rust font-marquee text-2xl text-ink"
           aria-hidden="true"
         >
-          ${initials}
+          ${initialsOf(member)}
         </div>`
 
   return `
@@ -111,6 +113,7 @@ function openMemberModal(member: BandMember): void {
   const modal = qs<HTMLElement>('#member-modal')
   const source = qs<HTMLSourceElement>('.member-modal-source', modal)
   const image = qs<HTMLImageElement>('.member-modal-picture', modal)
+  const initialsBox = qs<HTMLElement>('.member-modal-initials', modal)
   const role = qs<HTMLElement>('.member-modal-role', modal)
   const name = qs<HTMLElement>('.member-modal-name', modal)
   const description = qs<HTMLElement>('.member-modal-description', modal)
@@ -118,15 +121,19 @@ function openMemberModal(member: BandMember): void {
 
   const picture = image.closest<HTMLPictureElement>('picture')
   if (member.photo) {
+    // Real portrait: show the picture, hide the initials placeholder.
     if (picture) picture.hidden = false
+    initialsBox.hidden = true
     source.srcset = webpSrcset(member.photo.src, member.photo.width)
     image.src = withBase(member.photo.src)
     image.alt = member.photo.alt
     image.width = member.photo.width
     image.height = member.photo.height
   } else {
-    // No photo: hide the empty <picture> instead of showing a broken image.
+    // No portrait: show the big initials avatar instead of the picture.
     if (picture) picture.hidden = true
+    initialsBox.hidden = false
+    initialsBox.textContent = initialsOf(member)
     source.srcset = ''
   }
 

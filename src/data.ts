@@ -68,6 +68,14 @@ export const bandMembers: BandMember[] = [
     },
   },
   {
+    name: 'Sounida',
+    role: 'Gesang',
+    email: 'Sounida@ReBopHot.de',
+    description: 'Eine kurze Vorstellung von Sounida folgt in Kürze.',
+    // No portrait yet — the card and modal show the initials avatar
+    // placeholder until a photo is added here.
+  },
+  {
     name: 'Martin',
     role: 'Gesang + Tenor Sax.',
     email: 'Martin@ReBopHot.de',
