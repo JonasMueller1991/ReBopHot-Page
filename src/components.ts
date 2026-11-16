@@ -94,7 +94,8 @@ function renderSkipLink(): void {
   document.body.prepend(link)
 }
 
-function renderHeader(activePage: PageName): void {
+/** `activePage === null` (404 page) highlights no link at all. */
+function renderHeader(activePage: PageName | null): void {
   const header = qs<HTMLElement>('#site-header')
 
   // Rendered logo width per breakpoint (the ~2.03:1 wordmark at
@@ -312,7 +313,10 @@ function renderFooter(): void {
 }
 
 /** Fill skip link, header and footer. Call this first in every page script. */
-export function initChrome(activePage: PageName): void {
+/** Mounts the shared chrome. `activePage` is `null` on pages that are
+ *  not part of the navigation — e.g. the 404 page: no nav item is
+ *  highlighted then. */
+export function initChrome(activePage: PageName | null): void {
   renderSkipLink()
   renderHeader(activePage)
   renderFooter()

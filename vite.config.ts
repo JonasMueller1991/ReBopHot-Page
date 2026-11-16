@@ -38,6 +38,9 @@ export default defineConfig({
         impressum: fileURLToPath(
           new URL('./impressum/index.html', import.meta.url),
         ),
+        // The 404 page lives at the root: GitHub Pages serves
+        // dist/404.html for every unknown URL, at any depth.
+        notfound: fileURLToPath(new URL('./404.html', import.meta.url)),
       },
     },
   },

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seite nicht gefunden – ReBop Hot</title>
+    <meta
+      name="description"
+      content="Diese Seite gibt es leider nicht – hier geht es zurück zu ReBop Hot: Termine, Band, Musik und Kontakt."
+    />
+    <!-- A 404 should never end up in a search index. -->
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="Seite nicht gefunden – ReBop Hot" />
+    <meta
+      property="og:description"
+      content="Diese Seite gibt es leider nicht – hier geht es zurück zu ReBop Hot."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Apply the saved (or system) theme before first paint so the
+         page never flashes the wrong mode. Mirrors src/theme.ts. -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('rebophot-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+          document.documentElement.dataset.theme = theme
+        } catch (error) {
+          /* storage unavailable: keep the dark default */
+        }
+      })()
+    </script>
+
+    <link rel="stylesheet" href="/src/tailwind.css" />
+  </head>
+  <body class="min-h-screen font-condensed text-cream antialiased">
+    <header id="site-header"></header>
+
+    <main id="main-content" class="mx-auto max-w-6xl px-6 py-14">
+      <section class="mx-auto max-w-3xl text-center">
+        <p class="text-xs tracking-[0.4em] text-gold uppercase sm:text-sm">
+          Fehler 404
+        </p>
+        <h1
+          class="mt-4 border-b border-gold/40 pb-3 font-marquee text-3xl text-cream sm:text-4xl"
+        >
+          Diese Seite ist verstummt
+        </h1>
+        <p class="mt-6 font-display text-lg leading-relaxed text-cream-dim">
+          Hier spielt gerade leider niemand – die aufgerufene Seite gibt es
+          nicht (mehr). Vielleicht meintest du:
+        </p>
+
+        <!-- The way-back links are rendered by src/pages/notfound.ts:
+             their hrefs need the withBase prefix because GitHub Pages
+             serves the 404 from any URL depth, so relative links would
+             point into the void. -->
+        <div
+          id="notfound-links"
+          class="mt-8 flex flex-wrap justify-center gap-5"
+        ></div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <script type="module" src="/src/pages/notfound.ts"></script>
+  </body>
+</html>
