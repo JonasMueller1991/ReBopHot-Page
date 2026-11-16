@@ -8,7 +8,7 @@
  */
 import { initChrome, qs } from '@/components'
 import { events } from '@/data'
-import { formatEventDate } from '@/lib/dates'
+import { formatEventDate, formatEventDateParts } from '@/lib/dates'
 import { splitByDate } from '@/lib/events'
 import { escapeHtml } from '@/lib/escape'
 import { webpSrcset } from '@/lib/images'
@@ -44,6 +44,20 @@ function eventCard(event: BandEvent, index: number, past: boolean): string {
       ? '<p class="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-gold">&mdash; Termin noch unbest&auml;tigt (?) &mdash;</p>'
       : ''
 
+  // The date as a gold sticker "stamped" onto the card: rotated a few
+  // degrees, with the same hard offset shadow as the retro buttons.
+  // Fixed width (not w-fit) so the stamps align down the whole list;
+  // below the sm breakpoint it stacks above the text, from sm up it
+  // sits beside it (see the flex row in the card markup below).
+  const parts = formatEventDateParts(event.date)
+  const dateStampHtml = `
+      <div class="flex w-24 shrink-0 -rotate-2 flex-col items-center rounded-sm bg-gold-pop px-2 py-1.5 text-center text-ink shadow-[3px_3px_0_var(--color-wine)] transition-transform group-hover:rotate-0">
+        <span class="text-[0.65rem] font-semibold uppercase tracking-[0.15em]">${parts.weekday}</span>
+        <span class="text-lg font-bold uppercase tracking-wider">${parts.day}. ${parts.month}</span>
+        <span class="text-[0.65rem] tracking-[0.3em]">${parts.year}</span>
+      </div>
+  `
+
   // Cards with a picture are clickable and open the lightbox.
   const clickable = event.photo !== undefined
   const photoHintHtml = clickable
@@ -61,13 +75,17 @@ function eventCard(event: BandEvent, index: number, past: boolean): string {
     >
       ${cancelledHtml}
       ${tentativeHtml}
-      <h3 class="font-display text-xl text-cream">${escapeHtml(event.title)}</h3>
-      <p class="mt-1 text-sm uppercase tracking-[0.15em] text-gold">${formatEventDate(event.date)}</p>
-      <p class="mt-1 text-cream-dim">${escapeHtml(event.location)}</p>
-      ${timeHtml}
-      ${admissionHtml}
-      ${noteHtml}
-      ${photoHintHtml}
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+        ${dateStampHtml}
+        <div class="min-w-0">
+          <h3 class="font-display text-xl text-cream">${escapeHtml(event.title)}</h3>
+          <p class="mt-1 text-cream-dim">${escapeHtml(event.location)}</p>
+          ${timeHtml}
+          ${admissionHtml}
+          ${noteHtml}
+          ${photoHintHtml}
+        </div>
+      </div>
     </article>
   `
 }

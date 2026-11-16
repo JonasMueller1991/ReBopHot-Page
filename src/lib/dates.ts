@@ -37,3 +37,27 @@ export function formatEventDate(date: string): string {
     year: 'numeric',
   })
 }
+
+/** German date parts for the sticker stamp on the Termine cards. */
+export interface EventDateParts {
+  weekday: string
+  day: string
+  month: string
+  year: string
+}
+
+/** ISO date -> short German parts: "Mittwoch", "28", "Okt", "2026". */
+export function formatEventDateParts(date: string): EventDateParts {
+  const parsed = new Date(date)
+  // Short German months carry a period ("Okt."), which would clash
+  // with the day number inside the compact stamp — drop it.
+  const month = parsed
+    .toLocaleDateString('de-DE', { month: 'short' })
+    .replace('.', '')
+  return {
+    weekday: parsed.toLocaleDateString('de-DE', { weekday: 'long' }),
+    day: parsed.toLocaleDateString('de-DE', { day: '2-digit' }),
+    month,
+    year: parsed.toLocaleDateString('de-DE', { year: 'numeric' }),
+  }
+}

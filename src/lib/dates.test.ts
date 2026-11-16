@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { daysUntil, daysUntilLabel, formatEventDate, startOfDay } from './dates'
+import {
+  daysUntil,
+  daysUntilLabel,
+  formatEventDate,
+  formatEventDateParts,
+  startOfDay,
+} from './dates'
 
 // Month is 0-based in the Date constructor: 9 === October.
 const today = new Date(2026, 9, 16, 14, 30) // 16.10.2026, afternoon
@@ -37,5 +43,16 @@ describe('daysUntilLabel', () => {
 describe('formatEventDate', () => {
   it('formats in long German including the weekday', () => {
     expect(formatEventDate('2026-10-28')).toBe('Mittwoch, 28. Oktober 2026')
+  })
+})
+
+describe('formatEventDateParts', () => {
+  it('splits the date into short German parts for the sticker', () => {
+    expect(formatEventDateParts('2026-10-28')).toEqual({
+      weekday: 'Mittwoch',
+      day: '28',
+      month: 'Okt',
+      year: '2026',
+    })
   })
 })
